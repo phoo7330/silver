@@ -18,7 +18,7 @@ import com.app.todo.dao.TodoDao;
 import com.app.todo.vo.Todo;
 
 /**
- * Handles requests for the application home page.
+ * Handles requests for the application home page.ss
  */
 @Controller
 public class HomeController {
