@@ -6,9 +6,8 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	실버서퍼 시작 
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
