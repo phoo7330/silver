@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-	<title>Home</title>
+	<title>실버서퍼에 오신 것을 환영합니다.</title>
 </head>
 <body>
 <h1>
