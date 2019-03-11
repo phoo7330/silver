@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자 홈</title>
+<title>관리자 홈dd</title>
 </head>
 <body>
 
