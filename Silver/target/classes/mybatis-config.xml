@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- 	<typeAliases>
-		<typeAlias type="vo���" alias="���Ӹ�" />
+ 	<typeAliases>
+		<typeAlias type="com.scit.silver.vo.test" alias="test" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="����xml ���" />
-	</mappers> -->
+		<mapper resource="mapper/testMapper.xml" />
+	</mappers>
 </configuration>

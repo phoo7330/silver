@@ -6,13 +6,12 @@
 <!-- 게시판 처리 SQL -->
 <mapper namespace="com.scit.silver.dao.testMapper">
 	<insert id="insertTest" parameterType="test">
-	insert into test(
-		id,
-		pw
-	)
-	values(
-		#{id},
-		#{pw}
+	insert into 
+	test 
+	values
+	(
+	#{id},
+	#{pw}
 	)
 	
 	
