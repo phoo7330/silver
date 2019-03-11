@@ -4,8 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 게시판 처리 SQL -->
-<mapper namespace="interface 까지 경로">
-
+<mapper namespace="com.scit.silver.dao.testMapper">
+	<insert id="insertTest" parameterType="test">
+	insert into test(
+		id,
+		pw
+	)
+	values(
+		#{id},
+		#{pw}
+	)
+	
+	
+	</insert>
 	
 
 </mapper>

@@ -10,5 +10,10 @@
 	실버서퍼 시작 1
 </h1>
 
+<form action="insertTest">
+id:<input type="text" name="id">
+pw:<input type="password" name="pw">
+<input type="submit" value="전송">
+</form>
 </body>
 </html>
