@@ -46,7 +46,7 @@ public class MemberController {
 			return "signup";
 		}
 
-		return "redirect:/";
+		return "home";
 	}
 	
 	@RequestMapping(value = "/selectMember", method = RequestMethod.POST)
@@ -62,6 +62,6 @@ public class MemberController {
 
 		session.setAttribute("loginId", result.getUserid());
 
-		return "redirect:/";
+		return "main";
 	}
 }
