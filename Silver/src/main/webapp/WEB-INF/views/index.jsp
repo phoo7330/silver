@@ -74,7 +74,7 @@
 							
 							<hr class="my-4">
 							
-					        <form class="form-inline" action="search">
+					        <form class="form-inline" action="search"> 
 					            <div class="form-row col-12">
 									<div class="col-md-10 mb-5 mb-md-0">
 										<input class="form-control h-110 w-100 mr-lg-1 " type="text" placeholder="지역 혹은 기관명 검색을 검색하세요.">
