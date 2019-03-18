@@ -12,7 +12,6 @@
 
 <c:if test="${sessionScope.loginId!=null}">
 <h1>${sessionScope.loginId}님 환영합니다.</h1>
-
 	<h3><a href="logout">로그아웃</a></h3>
 </c:if>
 
