@@ -8,7 +8,7 @@
 		<typeAlias type="com.scit.silver.vo.SilverSearch" alias="SilverSearch" />
 	</typeAliases>
 	<mappers>
-	<mapper resource="mapper/MemberMapper.xml" />
+		<mapper resource="mapper/MemberMapper.xml" />
 		<mapper resource="mapper/SearchMapper.xml" />
 	</mappers>
 </configuration>
