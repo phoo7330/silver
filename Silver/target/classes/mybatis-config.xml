@@ -4,12 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
  	<typeAliases>
-		<typeAlias type="com.scit.silver.vo.test" alias="test" />
 		<typeAlias type="com.scit.silver.vo.Member" alias="Member" />
 		<typeAlias type="com.scit.silver.vo.SilverSearch" alias="SilverSearch" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="mapper/testMapper.xml" />
 		<mapper resource="mapper/MemberMapper.xml" />
 		<mapper resource="mapper/SearchMapper.xml" />
 	</mappers>
