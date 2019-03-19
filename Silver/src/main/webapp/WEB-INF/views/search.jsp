@@ -84,14 +84,14 @@
 	<div class="row mb-2 mx-1 my-1">
 		<div class="col-md-6">
 	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-	        <div class="col p-4 d-flex flex-column position-static">
-	          <strong class="d-inline-block mb-2 text-primary">지도 들어갈 부분</strong>
+	        <div id="map" class="col p-4 d-flex flex-column position-static">
+	          
 			</div>
 	      </div>
 		</div>
 		<div class="col-md-6">
 	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-	        <div class="col p-4 d-flex flex-column position-static">
+	        <div id="list" class="col p-4 d-flex flex-column position-static">
 	          <strong class="d-inline-block mb-2 text-danger">검색내역 들어갈 부분</strong>
 			</div>
 	      </div>
