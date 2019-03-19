@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.scit.silver.vo.SilverSearch;
-import com.scit.silver.vo.test;
 
 @Repository
 public class SearchDAO {
