@@ -85,15 +85,16 @@
 		<div class="col-md-6">
 	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm min-vh-100 position-relative">
 	        <div id="map" class="col p-4 d-flex flex-column position-static ">
-	          <!-- 여기 -->
+	          <!-- 지도표시부분 -->
 			</div>
 	      </div>
 		</div>
 		<div class="col-md-6">
 	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm min-vh-100 position-relative">
 	        <div id="list" class="col p-4 d-flex flex-column position-static">
-	          <strong class="d-inline-block mb-2 text-danger">검색내역 들어갈 부분</strong>
-			</div>
+	        	<table id="mlist">
+	    		</table>
+	        </div>
 	      </div>
 		</div>
 	</div>
@@ -131,20 +132,20 @@ function init() {
 function init2(maptest) {
 	jQuery.ajaxSettings.traditional = true;
 
-	/* console.log("maptest : " + JSON.stringify(maptest));
-	console.log(maptest); */
+	// console.log("maptest : " + JSON.stringify(maptest));
+	//console.log(maptest); 
 	
 	$.ajax({
 		url:"selectmap2",
 		data: {maptestJSON : JSON.stringify(maptest)},
-		type:"POST",
+		type:"post",
 		success:output2
 		
 	});
 }
 function output2(resp){
 
-	console.log(makers(resp));
+	//console.log("list : " + makers(resp));
 	wlist(makers(resp));
 }
 
@@ -169,7 +170,7 @@ var makers_temp = [];
 
 for(var i = 0;i < data.length ;i++){
 	makers_temp.push({
-			"mseq":data[i].search_seq,
+			"mseq":data[i].seach_seq,
 			"grd_lo":data[i].longitude,
 	   		"grd_la":data[i].lauitude});
 }
@@ -178,6 +179,7 @@ return makers_temp;
 }
 
 function wlist(accidentDeath){
+	//console.log(accidentDeath);
 	var list = '<tr>';
 	 list+='<th>'+'시퀀스'+'</th>';
 	 list+='<th>'+'위도'+'</th>';
@@ -192,7 +194,7 @@ function wlist(accidentDeath){
 	 });
 	 list+='</tr>';
 	
-		
+		//consol.log(data);
 		//alert(list);
 	  $('#mlist').html(list);  
 }
@@ -232,7 +234,7 @@ function write(accidentDeath){
 	                draggable: false
 	                //마커의 드래그 가능여부.
 	            });
-
+			
 	        markers.push(marker);
 	        
 	    }
@@ -263,8 +265,8 @@ function write(accidentDeath){
 	                showMarker(map, marker);
 	              
 					maptest.push({
-		            	"grd_lo":position._lng,
-		            	"grd_la":position._lat
+		            	"longitude":position._lng,
+		            	"lauitude":position._lat
 		            	   		});
 					
 					
