@@ -195,7 +195,7 @@ function wlist(accidentDeath){
 	 list+='</tr>';
 	
 		//consol.log(data);
-		//alert(list);
+		//alert(list); 
 	  $('#mlist').html(list);  
 }
 
