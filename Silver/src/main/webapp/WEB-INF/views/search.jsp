@@ -85,7 +85,7 @@
 		<div class="col-md-6">
 	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
 	        <div id="map" class="col p-4 d-flex flex-column position-static">
-	          
+	          <!-- 여기 -->
 			</div>
 	      </div>
 		</div>
