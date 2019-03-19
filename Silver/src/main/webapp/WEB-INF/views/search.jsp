@@ -170,8 +170,8 @@ var makers_temp = [];
 for(var i = 0;i < data.length ;i++){
 	makers_temp.push({
 			"mseq":data[i].search_seq,
-			"grd_lo":data[i].grd_lo,
-	   		"grd_la":data[i].grd_la});
+			"grd_lo":data[i].longitude,
+	   		"grd_la":data[i].lauitude});
 }
 
 return makers_temp;
