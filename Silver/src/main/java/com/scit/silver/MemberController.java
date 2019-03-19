@@ -28,6 +28,12 @@ public class MemberController {
 		return "signup";
 	}
 
+	@RequestMapping(value = "/search", method = { RequestMethod.POST, RequestMethod.GET })
+	public String search () {
+		return "search";
+	}
+	
+	
 	@RequestMapping(value = "/logout", method = { RequestMethod.POST, RequestMethod.GET })
 	public String logout(HttpSession session) {
 
@@ -35,6 +41,8 @@ public class MemberController {
 
 		return "redirect:/";
 	}
+	
+	
 	
 	@RequestMapping(value ="/insertMember", method = RequestMethod.POST)
 	public String insertMember(Member member, Model model) {
