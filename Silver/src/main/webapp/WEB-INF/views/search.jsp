@@ -4,9 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-asdffssdddd
- lee
- asdfasdfs
 	<title>실버서퍼-기관검색</title>
 	
 	<!-- 인코딩 -->
