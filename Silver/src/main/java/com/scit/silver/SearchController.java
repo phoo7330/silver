@@ -24,10 +24,11 @@ public class SearchController {
 	SearchDAO dao;
 	
 	@RequestMapping(value = "/selectmap", method = { RequestMethod.POST, RequestMethod.GET })
-	public @ResponseBody ArrayList<SilverSearch> selectmap() {
+	public @ResponseBody ArrayList<SilverSearch> selectmap(int type) {
 		
-		ArrayList<SilverSearch> result = dao.selectmap();
+		ArrayList<SilverSearch> result = dao.selectmap(type);
 		
+		//System.out.println(result);
 		return result;
 	}
 	@RequestMapping(value = "/selectmap2", method = RequestMethod.POST)
@@ -46,7 +47,7 @@ public class SearchController {
 		
 		
 		result = dao.selectmap2(maptest);
-		System.out.println(result);
+		//System.out.println(result);
 		return result;
 		} catch(ParseException e) {
 			e.printStackTrace();
