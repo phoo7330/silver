@@ -62,9 +62,12 @@
 <hr class="my-1">
 
 	<!-- 대시보드 -->
+	<!-- <div class="container"> -->
 	<header id="search">
-		<div class="p-3 bg-light text-black">
-			<div class="row mx-3">
+		<div class="p-1 bg-white text-black">
+			<div class="row shadow-sm p-3 bg-white rounded">
+				<div class="container">
+				<div class="row mx-1">
 				<!-- 버튼 -->
 				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="1">요양병원</button>
 				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="2">요양원</button>
@@ -76,29 +79,49 @@
 					<input class="form-control mr-sm-2 form-control-sm mx-2" type="text" placeholder="시설명 검색" aria-label="search">
 					<button class="btn btn-info my-2 my-sm-0 btn-sm" type="submit">검색</button>
 				</form>
+				</div>
+				</div>
 			</div>
 		</div>
 	</header>
+	<!-- </div> -->
 	
 	<!-- 지도&검색내역 표기 -->
+	<div class="container">
 	<div class="row mb-2 mx-1 my-1">
-		<div class="col-md-6">
-	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm min-vh-100 position-relative">
+		<div class="col-12 col-md-6">
+	      <div class="row overflow-hidden flex-md-row mb-0 shadow-sm min-vh-100 position-relative">
+			<!-- 지도 API-->
 	        <div id="map" class="col p-4 d-flex flex-column position-static ">
-	          <!-- 지도표시부분 -->
 			</div>
 	      </div>
 		</div>
-		<div class="col-md-6">
-	      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm min-vh-100 position-relative">
+		<div class="col-12 col-md-6">
+	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-100 position-relative">
 	        <div id="list" class="col p-4 d-flex flex-column position-static">
+	       <!-- 리스트 상단 -->
+	        	<header id="list-header">
+	        		<div class="bg-white text-dark">
+	        			<div class="row ">
+		        			<div class="col-sm-8 info">
+		        				<p class="text-secondary font-weight-bold">총 000개의 시설을 찾았습니다.</p>
+		        			</div>	
+		        			<div class="col-sm-4">
+		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
+		        			</div>
+	        			</div>
+	        		<hr class="my-1">
+	        		</div>
+	        	</header>
+     
+	        <!-- 리스트 테이블 -->
 	        	<table id="mlist">
 	    		</table>
 	        </div>
 	      </div>
 		</div>
 	</div>
-
+	</div>
 
 	<!-- jQuery javaScript 추가 -->
 	<script src="resources/js/jquery.min.js"></script>
@@ -198,9 +221,12 @@ return makers_temp;
 
 function wlist(accidentDeath){
 	//console.log(accidentDeath);
-	var list = '<tr>';
-	 
-	 $.each(accidentDeath, function (index, item){
+	
+	var list = '';
+		list += '<table class="table table-horver">';
+		
+		
+	$.each(accidentDeath, function (index, item){
 		/*  var siltype = null;
 		 if(item.type==1){
 			 siltype = "요양병원";			 
@@ -215,15 +241,14 @@ function wlist(accidentDeath){
 			grade;
 			lauitude;
 			longitude; */
-			list+='<td>'+item.grade+'</td>'; //등급
-			list+='<td>'+item.type+'</td>'; //시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
-			list+='<td>'+item.silvername+'</td>';
-			list+='<td>'+item.areaa+item.areab+item.areac+'</td>';
-			list+='<td>'+item.service+'</td>';
-			list+='</tr>';
+			list += '<tbody>';
+			list += '<tr>';
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+item.type+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '</tr>';
+			list += '</tbody>';
+			
 	 });
-	 list+='</tr>';
-	
+			list += '</table>';
 		//consol.log(data);
 		//alert(list); 
 	  $('#mlist').html(list);  
