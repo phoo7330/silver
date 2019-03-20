@@ -66,10 +66,10 @@
 		<div class="p-3 bg-light text-black">
 			<div class="row mx-3">
 				<!-- 버튼 -->
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 active">요양병원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 ">요양원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 ">방문시설</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 ">치매전담</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="1">요양병원</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="2">요양원</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="3">방문시설</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="4">치매전담</button>
 				
 				<!-- 검색 -->
 				<form class="form-inline mt-2 mt-md-0">
@@ -115,17 +115,29 @@
 <script>
 
 $(function() {
-	init();
 	
+	//기본 플레그
+	var flag = 1;
+	
+	init(flag);
+	
+	$(".categoryBtn").off("click").on("click",function(){
+		
+		var btnFlag = $(this).attr("btnFlag");
+		init(btnFlag);
+		
 	});
+	
+});
 
 
-function init() {
+function init(flag) {
 	
 
 	$.ajax({
 		url:"selectmap",
 		type:"get",
+		data:{"type":flag},
 		success:output
 	});
 }
@@ -150,7 +162,7 @@ function output2(resp){
 }
 
 function output(resp){
-
+	
 	// 2014년 사망사고 위치
 	var accidentDeath = {
 	     "searchResult": {
@@ -159,7 +171,7 @@ function output(resp){
 	     },
 	     "resultCode": "Success"
 	}
-	
+	wlist(makers(resp));
 	write(accidentDeath); // 지도에 마커그림
 	//wlist(makers(resp));
 }
@@ -171,25 +183,43 @@ var makers_temp = [];
 for(var i = 0;i < data.length ;i++){
 	makers_temp.push({
 			"mseq":data[i].seach_seq,
+			"type":data[i].type,
+			"areaa":data[i].areaa,
+			"areab":data[i].areab,
+			"areac":data[i].areac,
+			"silvername":data[i].silvername,
+			"service":data[i].service,
+			"grade":data[i].grade,
 			"grd_lo":data[i].longitude,
 	   		"grd_la":data[i].lauitude});
 }
-
 return makers_temp;
 }
 
 function wlist(accidentDeath){
 	//console.log(accidentDeath);
 	var list = '<tr>';
-	 list+='<th>'+'시퀀스'+'</th>';
-	 list+='<th>'+'위도'+'</th>';
-	 list+='<th>'+'경도'+'</th>';
-	 list+='</tr>';
+	 
 	 $.each(accidentDeath, function (index, item){
-		 	list+='<tr>';
-			list+='<td>'+item.mseq+'</td>';
-			list+='<td>'+item.grd_lo+'</td>';
-			list+='<td>'+item.grd_la+'</td>';
+		/*  var siltype = null;
+		 if(item.type==1){
+			 siltype = "요양병원";			 
+		 } */
+		 /* seach_seq;//시퀀스
+			type;//회원종류
+			areaa;
+			areab;
+			areac;
+			silvername;
+			service;
+			grade;
+			lauitude;
+			longitude; */
+			list+='<td>'+item.grade+'</td>'; //등급
+			list+='<td>'+item.type+'</td>'; //시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list+='<td>'+item.silvername+'</td>';
+			list+='<td>'+item.areaa+item.areab+item.areac+'</td>';
+			list+='<td>'+item.service+'</td>';
 			list+='</tr>';
 	 });
 	 list+='</tr>';
@@ -238,6 +268,8 @@ function write(accidentDeath){
 	        markers.push(marker);
 	        
 	    }
+	    /* console.log(accidentDeath);
+	    output2(accidentDeath); */
 	    
 	    naver.maps.Event.addListener(map, 'zoom_changed', function() {
 	        updateMarkers(map, markers);

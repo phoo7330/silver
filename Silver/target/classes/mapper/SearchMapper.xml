@@ -5,18 +5,35 @@
 
 <!-- 시설좌표 불러오기 SQL -->
 <mapper namespace="com.scit.silver.dao.SearchMapper">
-	<select id="selectmap" resultType="SilverSearch">
+	<select id="selectmap" parameterType="int" resultType="SilverSearch">
 	SELECT
 		SEACH_SEQ,
+		TYPE,
+		AREAA,
+		AREAB,
+		AREAC,
+		SILVERNAME,
+		SERVICE,
+		GRADE,
 		LAUITUDE,
 		LONGITUDE
 	FROM
 		SILVERSEARCH
-	
+	WHERE
+		TYPE=#{type}
+	 ORDER BY
+        GRADE
 	</select>
 	<select id="selectmap2" parameterType="SilverSearch" resultType="SilverSearch">
 	SELECT 
 		SEACH_SEQ,
+		TYPE,
+		AREAA,
+		AREAB,
+		AREAC,
+		SILVERNAME,
+		SERVICE,
+		GRADE,
 		LAUITUDE,
 		LONGITUDE
 	FROM
@@ -35,7 +52,8 @@
         #{item.lauitude}
 		
     </foreach>
-		
+	ORDER BY
+        GRADE
 		
 	
 	</select>

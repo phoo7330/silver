@@ -14,12 +14,12 @@ public class SearchDAO {
 	@Autowired
 	SqlSession session;
 
-	public ArrayList<SilverSearch> selectmap(){
+	public ArrayList<SilverSearch> selectmap(int type){
 		ArrayList<SilverSearch> result = null;
 		
 		SearchMapper mapper = session.getMapper(SearchMapper.class);
 		
-		result = mapper.selectmap();
+		result = mapper.selectmap(type);
 
 		return result;
 	}
