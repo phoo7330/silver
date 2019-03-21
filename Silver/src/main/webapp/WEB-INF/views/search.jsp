@@ -104,7 +104,7 @@
 	        		<div class="bg-white text-dark">
 	        			<div class="row ">
 		        			<div class="col-sm-8 info">
-		        				<p class="text-secondary font-weight-bold">총 000개의 시설을 찾았습니다.</p>
+		        				<p id="count" class="text-secondary font-weight-bold"></p>
 		        			</div>	
 		        			<div class="col-sm-4">
 		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
@@ -152,6 +152,7 @@ $(function() {
 	});
 	
 });
+
 
 
 function init(flag) {
@@ -224,26 +225,27 @@ function wlist(accidentDeath){
 	
 	var list = '';
 		list += '<table class="table table-horver">';
-		
+	var cc = accidentDeath.length;
+	var count = '';
+	       count+='총'
+	       count+=cc;
+	       count+='개의 시설을 찾았습니다.';
+	       $('#count').html(count); 
 		
 	$.each(accidentDeath, function (index, item){
-		/*  var siltype = null;
+		 var siltype = null;
 		 if(item.type==1){
 			 siltype = "요양병원";			 
-		 } */
-		 /* seach_seq;//시퀀스
-			type;//회원종류
-			areaa;
-			areab;
-			areac;
-			silvername;
-			service;
-			grade;
-			lauitude;
-			longitude; */
+		 } else if(item.type==2){
+			 siltype = "요양원";			 
+		 } else if(item.type==3){
+			 siltype = "방문시설";			 
+		 } else if(item.type==4){
+			 siltype = "치매전담";			 
+		 }
 			list += '<tbody>';
 			list += '<tr>';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+item.type+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
@@ -327,7 +329,7 @@ function write(accidentDeath){
 	            
 	            if (mapBounds.hasLatLng(position)) {
 	                showMarker(map, marker);
-	              
+	               
 					maptest.push({
 		            	"longitude":position._lng,
 		            	"lauitude":position._lat
@@ -345,7 +347,7 @@ function write(accidentDeath){
 	        //console.log(maptest);
 	       // 현재 지도상의 마커만 배열에 들어감. 여기서 리스트 출력하자
 	        init2(maptest);
-	       
+	      
 	    }
 
 	    function showMarker(map, marker) {
@@ -410,11 +412,20 @@ function write(accidentDeath){
 	        return function(e) {
 	            var marker = markers[seq],
 	                infoWindow = infoWindows[seq];
-
+	            var maptest = [];
+	            var position = marker.getPosition();
+					
 	            if (infoWindow.getMap()) {
 	                infoWindow.close();
 	            } else {
 	                infoWindow.open(map, marker);
+	                 maptest.push({
+		            	"longitude":position._lng,
+		            	"lauitude":position._lat
+		            	   		});
+	                
+	                init2(maptest); 
+	               
 	            }
 	        }
 	    }
