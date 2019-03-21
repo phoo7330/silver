@@ -19,6 +19,7 @@
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
 
+
 </head>
 <body>
 
@@ -115,8 +116,11 @@
 	        	</header>
      
 	        <!-- 리스트 테이블 -->
+	       
+
 	        	<table id="mlist">
 	    		</table>
+	    	
 	        </div>
 	      </div>
 		</div>
@@ -244,7 +248,7 @@ function wlist(accidentDeath){
 			 siltype = "치매전담";			 
 		 }
 			list += '<tbody>';
-			list += '<tr>';
+			list += '<tr class="onesilver" data-value="'+item.mseq+'">';
 			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
@@ -253,7 +257,13 @@ function wlist(accidentDeath){
 			list += '</table>';
 		//consol.log(data);
 		//alert(list); 
-	  $('#mlist').html(list);  
+	  $('#mlist').html(list);
+	  
+	  //클릭한 시설의 정보페이지로 넘어감
+	  $(".onesilver").on('click', function(){
+		  var booknum = $(this).attr("data-value");
+		  console.log(booknum);
+	  });
 }
 
 //받은 좌표로 마커를 찍음
@@ -294,7 +304,7 @@ function write(accidentDeath){
 			
 	        
 	        var infoWindow = new naver.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름: <b>"'+ spot.silvername +'"</b>.</div>'
+	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름:<br> <b>"'+ spot.silvername +'"</b></div>'
 	        });
 	        
 	        
@@ -408,6 +418,7 @@ function write(accidentDeath){
 	        }
 	    });
 
+	    //클릭한 마커만 오른쪽 리스트에 표시한다
 	    function getClickHandler(seq) {
 	        return function(e) {
 	            var marker = markers[seq],
@@ -430,6 +441,7 @@ function write(accidentDeath){
 	        }
 	    }
 
+	    //마커별로 이벤트를 입력한다.
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 	    }
