@@ -230,7 +230,7 @@ function wlist(accidentDeath){
 	       count+='총'
 	       count+=cc;
 	       count+='개의 시설을 찾았습니다.';
-	       $('#count').html(count); 
+	       $('#count').html(count);  
 		
 	$.each(accidentDeath, function (index, item){
 		 var siltype = null;
