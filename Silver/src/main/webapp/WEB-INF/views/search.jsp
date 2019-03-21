@@ -266,6 +266,7 @@ function wlist(accidentDeath){
 	  });
 }
 
+
 //받은 좌표로 마커를 찍음
 function write(accidentDeath){
 	 var map = new naver.maps.Map("map", {
