@@ -290,6 +290,7 @@ function write(accidentDeath){
 	                //마커의 드래그 가능여부.
 	            });
 			
+	        
 	        var infoWindow = new naver.maps.InfoWindow({
 	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름: <b>"'+ spot.silvername +'"</b>.</div>'
 	        });
