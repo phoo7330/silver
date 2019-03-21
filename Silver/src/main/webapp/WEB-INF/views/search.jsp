@@ -274,7 +274,7 @@ function write(accidentDeath){
 	 
 	    var markers = [],
 	        data = accidentDeath.searchResult.accidentDeath;
-	    
+	    var infoWindows = [];
 	    
 	   
 	    
@@ -290,6 +290,12 @@ function write(accidentDeath){
 	                //마커의 드래그 가능여부.
 	            });
 			
+	        var infoWindow = new naver.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름: <b>"'+ spot.silvername +'"</b>.</div>'
+	        });
+	        
+	        
+	        infoWindows.push(infoWindow);
 	        markers.push(marker);
 	        
 	    }
@@ -398,7 +404,23 @@ function write(accidentDeath){
 	            $(clusterMarker.getElement()).find('div:first-child').text(count);
 	        }
 	    });
-	    
+
+	    function getClickHandler(seq) {
+	        return function(e) {
+	            var marker = markers[seq],
+	                infoWindow = infoWindows[seq];
+
+	            if (infoWindow.getMap()) {
+	                infoWindow.close();
+	            } else {
+	                infoWindow.open(map, marker);
+	            }
+	        }
+	    }
+
+	    for (var i=0, ii=markers.length; i<ii; i++) {
+	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+	    }
 	    
 }
 
