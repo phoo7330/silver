@@ -104,7 +104,7 @@
 	        		<div class="bg-white text-dark">
 	        			<div class="row ">
 		        			<div class="col-sm-8 info">
-		        				<p class="text-secondary font-weight-bold">총 000개의 시설을 찾았습니다.</p>
+		        				<p id="count" class="text-secondary font-weight-bold"></p>
 		        			</div>	
 		        			<div class="col-sm-4">
 		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
