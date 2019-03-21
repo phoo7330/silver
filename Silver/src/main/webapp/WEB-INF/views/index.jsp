@@ -32,7 +32,7 @@
 		  	<div class="navbar-nav"> 
 		  		<a class="nav-item nav-link active" href="institution">
 		  			요양기관 <span class="sr-only">(current)</span> </a>
-		  		<a class="nav-item nav-link" href="practician">
+		  		<a class="nav-item nav-link" href="worker">
 		  			종사자 </a>
 		  		<a class="nav-item nav-link" href="inquiry">
 		  			자주하는질문 </a>	

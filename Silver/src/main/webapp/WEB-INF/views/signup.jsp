@@ -15,7 +15,7 @@
 	
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
-	<link rel="stylesheet" href="resources/css/signup.css" >
+	<link rel="stylesheet" href="resources/css/signin.css"> 
 	
 	 <style>
       .bd-placeholder-img {
@@ -49,7 +49,7 @@
 		  	<div class="navbar-nav"> 
 		  		<a class="nav-item nav-link active" href="institution">
 		  			요양기관 <span class="sr-only">(current)</span> </a>
-		  		<a class="nav-item nav-link" href="practician">
+		  		<a class="nav-item nav-link" href="worker">
 		  			종사자 </a>
 		  		<a class="nav-item nav-link" href="inquiry">
 		  			자주하는질문 </a>	
@@ -76,8 +76,8 @@
 
 <hr class="my-1">
 
-	
-	<div class="container">
+	<!-- 회원가입 선택 -->
+	<div class="container" id="select-signup">
 		<div class="py-5 text-center">
 			<img class="mb-4" src="resources/image/user.svg" alt="" width="72" height="72"> 
 			<div class="signup-header px-5 py-0">
@@ -101,7 +101,7 @@
 				<li>일반사용자와 요양기관 구직</li>	
 				<li>하고있는 종사자로 등록하기</li>		          
 				</ul>
-				<button type="button" class="btn btn-lg btn-block btn-outline-info active">가입하기</button>
+				<button id="custombtn" type="button" class="btn btn-lg btn-block btn-outline-info">가입하기</button>
 			</div>
 		</div>
 	</div>
@@ -116,7 +116,7 @@
 				<li>실제 요양기관을 운영중인</li>
 				<li>기관 담당자 등록하기</li>
 				</ul>
-				<button type="button" class="btn btn-lg btn-block btn-outline-info">가입하기</button>
+				<button id="facilitybtn" type="button" class="btn btn-lg btn-block btn-outline-info">가입하기</button>
 			</div>
 		</div>
 	</div>
@@ -125,30 +125,159 @@
 	</div>	
 </div>
 
-	<!-- 회원가입 -->
-	<!-- <form action="insertMember" method="post"> -->
-	
-	<%-- <input type="hidden" name="registration" value="${member.registration}"><br>
-	warning:<input type="text" name="warning" value="${member.warning}"><br>
-	<input type="number" name="code_num" value="${member.code_num}"><br> --%>
-<%--	
-	<div class="container">
+	<!-- 일반가입자 회원가입 -->
+	<form class="form-signup" id="custom-signup" action="insertMember" method="post">
+		
+		<div class="container">
+		<!-- 상단 -->
 		<div class="py-5 text-center">
-			<form class="form-signup" action="insertMember" method="post">
-				<img class="mb-4" src="resources/image/userplus.svg" alt="" width="72" height="72"> 
-				<h2 class="my-1">회원가입</h2>
-
-				TYPE:<input type="number" name="type" value="${member.type}"><br>
-				ID:<input type="text" name="userid" value="${member.userid}"><br>
-				PW:<input type="password" name="userpwd" value="${member.userpwd}"><br>
-				이름:<input type="text" name="username" value="${member.username}"><br>
-				생년월일:<input type="date" name="birthday" value="${member.birthday}"><br>
-				성별:<input type="text" name="gender" value="${member.gender}"><br>
-				주소:<input type="text" name="address" value="${member.address}"><br>
-				EMAIL:<input type="email" name="email" value="${member.email}"><br>
-				<input type="submit" value="회원가입">
-			</form>
+			<img class="mb-4" src="resources/image/userplus.svg" alt="" width="72" height="72"> 
+			<div class="signup-header px-5 py-0">
+				<h4 class="my-1">회원가입</h4>
+				<p class="lead">일반가입자 회원가입 페이지 입니다.</p>
+			</div>
 		</div>
-	</div> --%>
+		
+		<div class="p-3 col-12">
+		
+			
+			<!-- 가입자구분 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+				<label for="inputType" class="col-sm-2 col-form-label">가입자 구분</label>
+				<div class="col-sm-4">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.userid}" checked required>
+						<label class="form-check-label" for="custom">일반가입자</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.userid}" >
+						<label class="form-check-label" for="worker">종사자</label>
+					</div>
+				</div>
+			<div class="col-sm-3">
+			</div>
+			</div>
+			<!-- 아이디 -->
+	  		<div class="form-group row">
+	  		<div class="col-sm-3">
+			</div>
+			    <label for="inputId" class="col-sm-2 col-form-label">아이디</label>
+			    <div class="col-sm-4">
+			      <input type="text" name="userid" class="form-control" id="inputId" value="${member.userid}" placeholder="아이디">
+			    </div>
+			<div class="col-sm-3">
+			</div>
+	  		</div>
+	  		<!-- 패스워드 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+			    <label for="inputPwd" class="col-sm-2 col-form-label">패스워드</label>
+			    <div class="col-sm-4">
+			      <input type="password" name="userpwd" class="form-control" id="inputPwd" value="${member.userpwd}" placeholder="패스워드">
+				  <small id="passwordHelpInline" class="text-muted"> 영문 소문자+숫자 조합입니다.</small>
+			    </div>
+			<div class="col-sm-3">
+			</div>
+			</div>	
+			<!-- 이름 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+			    <label for="inputName" class="col-sm-2 col-form-label">이름</label>
+			    <div class="col-sm-4">
+			      <input type="text" name="username" class="form-control" id="inputPwd" value="${member.username}" placeholder="이름">
+			    </div>
+			<div class="col-sm-3">
+			</div>
+			</div>	
+			<!-- 생년월일 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+			    <label for="inputBirth" class="col-sm-2 col-form-label">생년월일</label>
+			    <div class="col-sm-4">
+			      <input type="date" name="birthday" class="form-control" id="inputBirth" value="${member.birthday}">
+			    </div>
+			<div class="col-sm-3">
+			</div>
+			</div>	
+			<!-- 성별 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+				<label for="inputType" class="col-sm-2 col-form-label">성별</label>
+				<div class="col-sm-4">
+					 <select class="custom-select my-1 mr-sm-2" name="gender" id="inputGender">
+					    <option selected>선택</option>
+					    <option value="${member.gender}">남성</option>
+					    <option value="${member.gender}">여성</option>
+					  </select>
+				</div>
+			<div class="col-sm-3">
+			</div>
+			</div>
+			<!-- 이메일 -->
+  			<div class="form-group row">
+  			<div class="col-sm-3">
+			</div>
+			    <label for="inputEmail" class="col-sm-2 col-form-label">이메일</label>
+			    <div class="col-sm-4">
+			      <input type="email" name="email" class="form-control" id="inputEmail" value="${member.email}" placeholder="이메일">
+			    </div>
+			<div class="col-sm-3">
+			</div>
+			</div>	
+			<!-- 주소 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+			    <label for="inputAddress" class="col-sm-2 col-form-label">주소</label>
+			    <div class="col-sm-4">
+			      <input type="text" name="address" class="form-control" id="inputAddress" value="${member.address}" placeholder="주소">
+			    </div>
+			<div class="col-sm-3">
+			</div>
+			</div>
+			<!-- 제출버튼 -->
+			<div class="form-group row">
+			<div class="col-sm-3">
+			</div>
+				<div class="col-sm-6">
+				<button type="button" id="signupbtn" class="btn btn-info btn-lg btn-block">회원가입</button>
+				</div>
+			<div class="col-sm-3">
+			</div>
+			</div>
+			
+		
+		</div> 
+	</div>
+	</form>
+
+	<!-- jQuery javaScript 추가 -->
+	<script src="resources/js/jquery.min.js"></script>
+	
+	<!-- Popper javaScript 추가 -->
+	<script src="resources/js/popper.min.js"></script>
+	
+	<!-- Bootstrap javaScript 추가 -->
+	<script src="resources/js/bootstrap.min.js"></script>
+	
+	<!-- 일반로그인 스크립트 -->
+	<script>
+ 	 $(function(){
+		 $("#custom-signup").hide();
+		 
+		 $('#custombtn').on('click',function(){
+			 console.log("aaa");
+			 $("#select-signup").hide();
+			 $("#custom-signup").show(); 
+		 });
+	 });  
+	</script>
+
 </body>
 </html>
