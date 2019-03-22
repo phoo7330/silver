@@ -148,11 +148,11 @@
 				<label for="inputType" class="col-sm-2 col-form-label">가입자 구분</label>
 				<div class="col-sm-4">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.userid}" checked required>
+						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.type}" checked required>
 						<label class="form-check-label" for="custom">일반가입자</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.userid}" >
+						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.type}" >
 						<label class="form-check-label" for="worker">종사자</label>
 					</div>
 				</div>

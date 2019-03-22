@@ -87,7 +87,7 @@
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
 		<label for="inputEmail" class="sr-only">이메일 주소</label>
 		
-		<input type="email" id="inputEmail" name="userid" value="${member.userid}" class="form-control" placeholder="이메일을 입력하세요." required autofocus>
+		<input type="text" id="inputEmail" name="userid" value="${member.userid}" class="form-control" placeholder="아이디를 입력하세요." required autofocus>
 		<label for="inputPassword" class="sr-only">비밀번호</label>
 		<input type="password" id="inputPassword" name="userpwd" value="${member.userpwd}" class="form-control" placeholder="비밀번호를 입력하세요." required>
 		<div class="checkbox mb-3">
