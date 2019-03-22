@@ -20,7 +20,6 @@
   	,REGISTRATION
   	,EMAIL
   	,WARNING
-  	,EMPLOYEE_NUMBER
   	)
   	
   	VALUES
@@ -35,8 +34,7 @@
   	,#{address}
   	,SYSDATE
   	,#{email}
-  	,#{warning}				
-  	,#{employee_number}
+  	,#{warning}
 )
   	
   </insert>

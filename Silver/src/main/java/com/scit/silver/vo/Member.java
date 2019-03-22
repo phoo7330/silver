@@ -13,9 +13,8 @@ public class Member {
 	private	String registration;
 	private	String email;
 	private	String warning;
-	private String employee_number;
 	public Member(int code_num, int type, String userid, String userpwd, String username, String birthday,
-			String gender, String address, String registration, String email, String warning, String employee_number) {
+			String gender, String address, String registration, String email, String warning) {
 		super();
 		this.code_num = code_num;
 		this.type = type;
@@ -28,7 +27,6 @@ public class Member {
 		this.registration = registration;
 		this.email = email;
 		this.warning = warning;
-		this.employee_number = employee_number;
 	}
 	public Member() {
 		super();
@@ -99,17 +97,10 @@ public class Member {
 	public void setWarning(String warning) {
 		this.warning = warning;
 	}
-	public String getEmployee_number() {
-		return employee_number;
-	}
-	public void setEmployee_number(String employee_number) {
-		this.employee_number = employee_number;
-	}
 	@Override
 	public String toString() {
 		return "Member [code_num=" + code_num + ", type=" + type + ", userid=" + userid + ", userpwd=" + userpwd
 				+ ", username=" + username + ", birthday=" + birthday + ", gender=" + gender + ", address=" + address
-				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + ", employee_number="
-				+ employee_number + "]";
+				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + "]";
 	}
 }
