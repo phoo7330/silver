@@ -248,7 +248,7 @@
 			<div class="col-sm-3">
 			</div>
 				<div class="col-sm-6">
-				<button type="button" name="insertMember" id="signupbtn" class="btn btn-info btn-lg btn-block">회원가입</button>
+				<button type="button" name="signupbtn" id="signupbtn" class="btn btn-info btn-lg btn-block">회원가입</button>
 				</div>
 			<div class="col-sm-3">
 			</div>
