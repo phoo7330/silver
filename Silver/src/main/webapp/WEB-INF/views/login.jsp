@@ -81,7 +81,7 @@
 
 	<!-- 로그인 폼  -->
 	<div class="div-signin text-center">
-	<form class="form-signin">
+	<form class="form-signin" action="selectMember" method="post">
 
 		<img class="mb-4" src="resources/image/login.svg" alt="" width="72" height="72"> 
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
