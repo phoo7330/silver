@@ -199,7 +199,7 @@
 			</div>
 			    <label for="inputName" class="col-sm-2 col-form-label">이름</label>
 			    <div class="col-sm-4">
-			      <input type="text" name="username" class="form-control" id="inputPwd" value="${member.username}" placeholder="이름">
+			      <input type="text" name="username" class="form-control" id="inputName" value="${member.username}" placeholder="이름">
 			    </div>
 			<div class="col-sm-3">
 			</div>
@@ -257,7 +257,7 @@
 			<div class="col-sm-3">
 			</div>
 				<div class="col-sm-6">
-				<button type="button" id="signupbtn" class="btn btn-info btn-lg btn-block">회원가입</button>
+				<button type="button" name="insertMember" id="signupbtn" class="btn btn-info btn-lg btn-block">회원가입</button>
 				</div>
 			<div class="col-sm-3">
 			</div>
