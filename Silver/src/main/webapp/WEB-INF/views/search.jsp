@@ -19,6 +19,7 @@
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
 
+
 </head>
 <body>
 
@@ -96,16 +97,15 @@
 			</div>
 	      </div>
 		</div>
-		<!-- 검색리스트 -->
 		<div class="col-12 col-md-6">
-	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-100 position-relative">
+	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-500">
 	        <div id="list" class="col p-4 d-flex flex-column position-static">
 	       <!-- 리스트 상단 -->
 	        	<header id="list-header">
 	        		<div class="bg-white text-dark">
 	        			<div class="row ">
 		        			<div class="col-sm-8 info">
-		        				<p class="text-secondary font-weight-bold">총 000개의 시설을 찾았습니다.</p>
+		        				<p id="count" class="text-secondary font-weight-bold"></p>
 		        			</div>	
 		        			<div class="col-sm-4">
 		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
@@ -116,8 +116,11 @@
 	        	</header>
      
 	        <!-- 리스트 테이블 -->
+	       
+
 	        	<table id="mlist">
 	    		</table>
+	    	
 	        </div>
 	      </div>
 		</div>
@@ -153,6 +156,7 @@ $(function() {
 	});
 	
 });
+
 
 
 function init(flag) {
@@ -225,26 +229,27 @@ function wlist(accidentDeath){
 	
 	var list = '';
 		list += '<table class="table table-horver">';
-		
+	var cc = accidentDeath.length;
+	var count = '';
+	       count+='총'
+	       count+=cc;
+	       count+='개의 시설을 찾았습니다.';
+	       $('#count').html(count);  
 		
 	$.each(accidentDeath, function (index, item){
-		/*  var siltype = null;
+		 var siltype = null;
 		 if(item.type==1){
 			 siltype = "요양병원";			 
-		 } */
-		 /* seach_seq;//시퀀스
-			type;//회원종류
-			areaa;
-			areab;
-			areac;
-			silvername;
-			service;
-			grade;
-			lauitude;
-			longitude; */
+		 } else if(item.type==2){
+			 siltype = "요양원";			 
+		 } else if(item.type==3){
+			 siltype = "방문시설";			 
+		 } else if(item.type==4){
+			 siltype = "치매전담";			 
+		 }
 			list += '<tbody>';
-			list += '<tr>';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+item.type+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 6rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '<tr class="onesilver" data-value="'+item.mseq+'">';
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
@@ -252,8 +257,15 @@ function wlist(accidentDeath){
 			list += '</table>';
 		//consol.log(data);
 		//alert(list); 
-	  $('#mlist').html(list);  
+	  $('#mlist').html(list);
+	  
+	  //클릭한 시설의 정보페이지로 넘어감
+	  $(".onesilver").on('click', function(){
+		  var booknum = $(this).attr("data-value");
+		  console.log(booknum);
+	  });
 }
+
 
 //받은 좌표로 마커를 찍음
 function write(accidentDeath){
@@ -293,7 +305,7 @@ function write(accidentDeath){
 			
 	        
 	        var infoWindow = new naver.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름: <b>"'+ spot.silvername +'"</b>.</div>'
+	            content: '<div style="width:150px;text-align:center;padding:10px;">시설이름:<br> <b>"'+ spot.silvername +'"</b></div>'
 	        });
 	        
 	        
@@ -328,7 +340,7 @@ function write(accidentDeath){
 	            
 	            if (mapBounds.hasLatLng(position)) {
 	                showMarker(map, marker);
-	              
+	               
 					maptest.push({
 		            	"longitude":position._lng,
 		            	"lauitude":position._lat
@@ -346,7 +358,7 @@ function write(accidentDeath){
 	        //console.log(maptest);
 	       // 현재 지도상의 마커만 배열에 들어감. 여기서 리스트 출력하자
 	        init2(maptest);
-	       
+	      
 	    }
 
 	    function showMarker(map, marker) {
@@ -407,19 +419,30 @@ function write(accidentDeath){
 	        }
 	    });
 
+	    //클릭한 마커만 오른쪽 리스트에 표시한다
 	    function getClickHandler(seq) {
 	        return function(e) {
 	            var marker = markers[seq],
 	                infoWindow = infoWindows[seq];
-
+	            var maptest = [];
+	            var position = marker.getPosition();
+					
 	            if (infoWindow.getMap()) {
 	                infoWindow.close();
 	            } else {
 	                infoWindow.open(map, marker);
+	                 maptest.push({
+		            	"longitude":position._lng,
+		            	"lauitude":position._lat
+		            	   		});
+	                
+	                init2(maptest); 
+	               
 	            }
 	        }
 	    }
 
+	    //마커별로 이벤트를 입력한다.
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 	    }
