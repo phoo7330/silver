@@ -65,6 +65,7 @@ public class MemberController {
 		if (result == null) {
 			model.addAttribute("message", "id와 pw를 확인해주세요.");
 			model.addAttribute("member", member);
+			System.out.println("[로그인실패]!");
 			return "login";
 		}
 
@@ -77,7 +78,7 @@ public class MemberController {
 			session.setAttribute("loginId", result.getUserid());
 			session.setAttribute("workerId", result.getUserid());
 			session.setAttribute("usertype", "2");
-			System.out.println("[구직자]: "+result.getUserid()+);
+			System.out.println("[구직자]: "+result.getUserid());
 		} else if(result.getType()==3) {
 			session.setAttribute("loginId", result.getUserid());
 			session.setAttribute("managerId", result.getUserid());
@@ -89,8 +90,8 @@ public class MemberController {
 			session.setAttribute("usertype", "10");
 			System.out.println("[사이트관리자]: "+result.getUserid());
 		} 
-		System.out.println(": [세션에 입력된 아이디]: "+result.getUserid()+);
-		System.out.println("[세션에서 입력된 타입]: "+session.getAttribute("usertype"));
+		System.out.println("[세션에 입력된 아이디]: "+result.getUserid());
+		System.out.println("[세션에서 입력된 회원타입]: "+session.getAttribute("usertype"));
 		return "index";
 	}
 }
