@@ -5,6 +5,17 @@
 <html>
 <head>
 	<title>회원가입</title>
+	<!-- 일반사용자 type값 컨트롤러로 보내기 -->
+	<script src="scripts/jquery-1.6.2.min.js"></script>
+	<script type="radio/javascript">
+	$(document).ready(function(){
+		$('#custom').val('1');
+	});
+	$(document).ready(function(){
+		$('#worker').val('2');
+	});
+	</script>
+	
 	
 	<!-- 인코딩 -->
 	<meta charset="UTF-8">
