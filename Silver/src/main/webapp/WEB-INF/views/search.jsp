@@ -96,6 +96,7 @@
 			</div>
 	      </div>
 		</div>
+		<!-- 검색리스트 -->
 		<div class="col-12 col-md-6">
 	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-100 position-relative">
 	        <div id="list" class="col p-4 d-flex flex-column position-static">
