@@ -117,10 +117,10 @@
      
 	        <!-- 리스트 테이블 -->
 	       
-
-	        	<table id="mlist">
+			<div id="alllist" style="width:100%; height:600px; overflow:auto">
+	        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
 	    		</table>
-	    	
+	    	</div>
 	        </div>
 	      </div>
 		</div>
@@ -140,23 +140,87 @@
 
 
 <script>
-
+let isEnd = false; 
+//기본 플레그
+var flag = 1;
+var page = 1;
+var ffff = 0;
 $(function() {
-	
-	//기본 플레그
-	var flag = 1;
-	
 	init(flag);
+	pagelist(flag,page);
 	
 	$(".categoryBtn").off("click").on("click",function(){
-		
-		var btnFlag = $(this).attr("btnFlag");
-		init(btnFlag);
-		
+		page = 1;
+		ffff = 0;
+		flag = $(this).attr("btnFlag");
+		init(flag);
+		pagelist(flag);
 	});
 	
+	$('#alllist').scroll(function(){
+
+        let $alllist = $(this);
+
+        let scrollTop = $('#alllist').scrollTop();
+
+        let windowHeight = $('#alllist').height();
+
+        let documentHeight = $(document).height();
+
+        var scrollBottom = $("#alllist").height()- $("#alllist").scrollTop();
+
+        var scHeight = $('#alllist').prop('scrollHeight');
+
+        //console.log("스크롤길이:"+scHeight+"스크롤탑"+scrollTop);
+        //console.log(" | scrollTop:" + scrollTop+"바텀"+ scrollBottom);
+
+		var scrollHeight = $('#alllist').height();
+		var scrollPosition = $('#alllist').height() + $('#alllist').scrollTop();
+		//console.log(scrollHeight+"po"+scrollPosition);
+		//console.log(scHeight+"dd"+scrollPosition);
+		if (scHeight<scrollPosition) {
+			 console.log("다음페이지"); 
+			 page += 1;
+             ffff = 1;
+             console.log(page);
+             pagelist(flag,page);
+		}
+		
+			
+        
+        
+        
+        
+        // scrollbar의 thumb가 바닥 전 30px까지 도달 하면 리스트를 가져온다.
+
+       /* if( scrollTop + 400 > windowHeight ){
+                page += 1;
+                f = 1;
+                pagelist(flag);
+        } */
+	});
 });
 
+function count(data){
+	var cc = data.length;
+	var count = '';
+	       count+='총'
+	       count+=cc;
+	       count+='개의 시설을 찾았습니다.';
+	       $('#count').html(count); 
+}
+
+function pagelist(flag,page){
+	$.ajax({
+		url:"pagemap",
+		type:"get",
+		data:{
+			"type":flag,
+			"page":page
+		},
+		success:wlist
+	});
+}
 
 
 function init(flag) {
@@ -170,8 +234,9 @@ function init(flag) {
 	});
 }
 function init2(maptest) {
+	ffff=0;
 	jQuery.ajaxSettings.traditional = true;
-
+	count(maptest);
 	// console.log("maptest : " + JSON.stringify(maptest));
 	//console.log(maptest); 
 	
@@ -179,15 +244,15 @@ function init2(maptest) {
 		url:"selectmap2",
 		data: {maptestJSON : JSON.stringify(maptest)},
 		type:"post",
-		success:output2
+		success:wlist
 		
 	});
 }
-function output2(resp){
+/* function output2(resp){
 
 	//console.log("list : " + makers(resp));
-	wlist(makers(resp));
-}
+	//wlist(makers(resp));
+} */
 
 function output(resp){
 	
@@ -199,9 +264,10 @@ function output(resp){
 	     },
 	     "resultCode": "Success"
 	}
-	wlist(makers(resp));
+	//wlist(makers(resp));
 	write(accidentDeath); // 지도에 마커그림
 	//wlist(makers(resp));
+	count(makers(resp));
 }
 
 //DB에 있는 좌표를 받아옴
@@ -225,16 +291,9 @@ return makers_temp;
 }
 
 function wlist(accidentDeath){
-	//console.log(accidentDeath);
-	
 	var list = '';
 		list += '<table class="table table-horver">';
-	var cc = accidentDeath.length;
-	var count = '';
-	       count+='총'
-	       count+=cc;
-	       count+='개의 시설을 찾았습니다.';
-	       $('#count').html(count);  
+	 
 		
 	$.each(accidentDeath, function (index, item){
 		 var siltype = null;
@@ -248,7 +307,7 @@ function wlist(accidentDeath){
 			 siltype = "치매전담";			 
 		 }
 			list += '<tbody>';
-			list += '<tr class="onesilver" data-value="'+item.mseq+'">';
+			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
 			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
@@ -257,13 +316,19 @@ function wlist(accidentDeath){
 			list += '</table>';
 		//consol.log(data);
 		//alert(list); 
-	  $('#mlist').html(list);
+		if (ffff == 0) {
+			$('#mlist').html(list);
+		} else {
+			$('#mlist').append(list);
+		}
 	  
 	  //클릭한 시설의 정보페이지로 넘어감
 	  $(".onesilver").on('click', function(){
 		  var booknum = $(this).attr("data-value");
 		  console.log(booknum);
 	  });
+	
+	 
 }
 
 
@@ -358,6 +423,7 @@ function write(accidentDeath){
 	        //console.log(maptest);
 	       // 현재 지도상의 마커만 배열에 들어감. 여기서 리스트 출력하자
 	        init2(maptest);
+	       	
 	      
 	    }
 
