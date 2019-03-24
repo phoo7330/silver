@@ -238,7 +238,7 @@ function init2(maptest) {
 	jQuery.ajaxSettings.traditional = true;
 	count(maptest);
 	// console.log("maptest : " + JSON.stringify(maptest));
-	//console.log(maptest); 
+	//console.log(maptest);  
 	
 	$.ajax({
 		url:"selectmap2",
