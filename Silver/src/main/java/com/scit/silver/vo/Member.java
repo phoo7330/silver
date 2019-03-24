@@ -2,7 +2,7 @@ package com.scit.silver.vo;
 
 public class Member {
 	
-	private int code_num;
+	private int code_seq;
 	private int type;
 	private	String userid;
 	private String userpwd;
@@ -12,12 +12,13 @@ public class Member {
 	private	String address;
 	private	String registration;
 	private	String email;
-	private	String warning;
+	private	int warning;
+	private int employee_number;
 	
-	public Member(int code_num, int type, String userid, String userpwd, String username, String birthday,
-			String gender, String address, String registration, String email, String warning) {
+	public Member(int code_seq, int type, String userid, String userpwd, String username, String birthday,
+			String gender, String address, String registration, String email, int warning, int employee_number) {
 		super();
-		this.code_num = code_num;
+		this.code_seq = code_seq;
 		this.type = type;
 		this.userid = userid;
 		this.userpwd = userpwd;
@@ -28,18 +29,19 @@ public class Member {
 		this.registration = registration;
 		this.email = email;
 		this.warning = warning;
+		this.employee_number = employee_number;
 	}
 
 	public Member() {
 		super();
 	}
 
-	public int getCode_num() {
-		return code_num;
+	public int getCode_seq() {
+		return code_seq;
 	}
 
-	public void setCode_num(int code_num) {
-		this.code_num = code_num;
+	public void setCode_seq(int code_seq) {
+		this.code_seq = code_seq;
 	}
 
 	public int getType() {
@@ -114,21 +116,28 @@ public class Member {
 		this.email = email;
 	}
 
-	public String getWarning() {
+	public int getWarning() {
 		return warning;
 	}
 
-	public void setWarning(String warning) {
+	public void setWarning(int warning) {
 		this.warning = warning;
+	}
+
+	public int getEmployee_number() {
+		return employee_number;
+	}
+
+	public void setEmployee_number(int employee_number) {
+		this.employee_number = employee_number;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [code_num=" + code_num + ", type=" + type + ", userid=" + userid + ", userpwd=" + userpwd
+		return "Member [code_seq=" + code_seq + ", type=" + type + ", userid=" + userid + ", userpwd=" + userpwd
 				+ ", username=" + username + ", birthday=" + birthday + ", gender=" + gender + ", address=" + address
-				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + "]";
+				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + ", employee_number="
+				+ employee_number + "]";
 	}
-	
-	
-	
+		
 }

@@ -15,12 +15,21 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 
 		String contextPath = request.getContextPath();
-		String loginId = (String) session.getAttribute("loginId");
+		System.out.println(contextPath);
+		String nomalId = (String) session.getAttribute("nomalId");
+		System.out.println(nomalId);
+		String workerId = (String) session.getAttribute("workerId");
+		System.out.println(workerId);
+		String managerId= (String) session.getAttribute("managerId");
+		System.out.println(managerId);
+		String adminId= (String) session.getAttribute("adminId");
+		System.out.println(adminId);
 		String usertype = (String) session.getAttribute("usertype");
-		
+		System.out.println(usertype);
 		String requestURI = request.getRequestURI();
+		System.out.println(requestURI);
 		String uri = requestURI.substring(requestURI.lastIndexOf("/")+1);
-		
+		System.out.println(uri);
 		// 일반사용자만 가능한 요청
 		String nomalURI ="";
 		
@@ -28,26 +37,29 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		String workerURI ="";
 		
 		// 기관관리자만 가능한 요청
-		String teacherURI = "registStudent duplicateCheck score registScore retrieveAll existScore retrieveById";
+		String managerURI = "";
 		
 		// 사이트관리자만 가능한 요청
-		String studentURI = "modifyPassword retrieveScore";
+		String adminURI = "";
 		
-		
-		if(loginId == null) {
+		// 세션의 아이디값 검사
+		if(nomalId == null && workerId == null && managerId == null && adminId == null) {
 			response.sendRedirect(contextPath + "/login");  // 주소 표시줄 확인
 
 			return false;
+		// 사용자타입별 권한검사	
 		} else {
-			if(usertype.equals("student")  && teacherURI.contains(uri) || 
-				usertype.equals("teacher") && studentURI.contains(uri)) {
+			if(usertype.equals("1")  && nomalURI.contains(uri) || 
+				usertype.equals("2") && workerURI.contains(uri) ||
+				usertype.equals("3") && managerURI.contains(uri) ||
+				usertype.equals("10") && adminURI.contains(uri)) {
 				
 				//session.removeAttribute("loginId"); 세션에 있는값 지우기
 				
 				
-				session.setAttribute("msg", "현재 아이디로 해당 작업을 할 수 없습니다. 다시 로그인 하세요.");
+				session.setAttribute("msg", "현재 아이디로 해당 권한이 없습니다. 홈으로 돌아갑니다.");
 				
-				response.sendRedirect(contextPath + "/login"); 
+				response.sendRedirect(contextPath + "/index"); //권한실패시 index.jsp로 돌아간다.
 				
 				return false;
 				

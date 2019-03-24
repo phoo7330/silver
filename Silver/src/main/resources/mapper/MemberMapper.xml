@@ -9,7 +9,7 @@
   INSERT INTO
   	MEMBER
   	(
-  	CODE_NUM
+  	CODE_SEQ
   	,TYPE
   	,USERID
   	,USERPWD
@@ -24,7 +24,7 @@
   	
   	VALUES
   	(
-  	code_num.nextval
+  	CODE_SEQ.nextval
   	,#{type}
   	,#{userid}
   	,#{userpwd}
@@ -40,9 +40,9 @@
   	
   </insert>
   <!--로그인 -->
-  <select id="selectMember" parameterType="Member" >
+  <select id="selectMember" parameterType="Member" resultType="Member">
  	SELECT
-	 	CODE_NUM
+	 	CODE_SEQ
 	  	,TYPE
 	  	,USERID
 	  	,USERPWD

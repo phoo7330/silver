@@ -6,6 +6,8 @@
 <head>
 	<title>회원가입</title>
 	
+	
+	
 	<!-- 인코딩 -->
 	<meta charset="UTF-8">
 	<meta  name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
@@ -148,11 +150,11 @@
 				<label for="inputType" class="col-sm-2 col-form-label">가입자 구분</label>
 				<div class="col-sm-4">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.userid}" checked required>
+						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.type}" checked required>
 						<label class="form-check-label" for="custom">일반가입자</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.userid}" >
+						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.type}" >
 						<label class="form-check-label" for="worker">종사자</label>
 					</div>
 				</div>
@@ -188,7 +190,7 @@
 			</div>
 			    <label for="inputName" class="col-sm-2 col-form-label">이름</label>
 			    <div class="col-sm-4">
-			      <input type="text" name="username" class="form-control" id="inputPwd" value="${member.username}" placeholder="이름">
+			      <input type="text" name="username" class="form-control" id="inputName" value="${member.username}" placeholder="이름">
 			    </div>
 			<div class="col-sm-3">
 			</div>
@@ -279,5 +281,14 @@
 	 });  
 	</script>
 
+	<!-- 회원가입 정보입력 시 type & hidden값 지정(김동우수정) -->
+	<script type="radio/javascript">
+	$(document).ready(function(){
+		$('#custom').val('1');
+	});
+	$(document).ready(function(){
+		$('#worker').val('2');
+	});
+	</script>
 </body>
 </html>

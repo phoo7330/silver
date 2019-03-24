@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+	#search-box {
+	 height: 100px;
+	 background-color: black;
+	}
+	
+	#map {
+	 background-color: green;
+	 height: 715px;
+	}
+	
+	#list {
+	 background-color: blue;
+	 height: 714px;
+	 width: 100%;
+	}

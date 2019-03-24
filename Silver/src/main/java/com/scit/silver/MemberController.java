@@ -51,10 +51,11 @@ public class MemberController {
 		if (result == 0) {
 			model.addAttribute("message", "ID중복으로 가입실패");
 			model.addAttribute("member", member);
+			System.out.println("[회원가입실패!]");
 			return "signup";
 		}
 
-		return "home";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/selectMember", method = RequestMethod.POST)
@@ -65,11 +66,33 @@ public class MemberController {
 		if (result == null) {
 			model.addAttribute("message", "id와 pw를 확인해주세요.");
 			model.addAttribute("member", member);
+			System.out.println("[로그인실패]!");
 			return "login";
 		}
 
-		session.setAttribute("loginId", result.getUserid());
-
-		return "main";
+		if(result.getType()==1) {
+			session.setAttribute("loginId", result.getUserid());
+			session.setAttribute("nomalId", result.getUserid());
+			session.setAttribute("usertype", "1");
+			System.out.println("[일반회원]: "+result.getUserid());
+		} else if(result.getType()==2){
+			session.setAttribute("loginId", result.getUserid());
+			session.setAttribute("workerId", result.getUserid());
+			session.setAttribute("usertype", "2");
+			System.out.println("[구직자]: "+result.getUserid());
+		} else if(result.getType()==3) {
+			session.setAttribute("loginId", result.getUserid());
+			session.setAttribute("managerId", result.getUserid());
+			session.setAttribute("usertype", "3");
+			System.out.println("[시설관리자]: "+result.getUserid());
+		} else if(result.getType()==10) {
+			session.setAttribute("loginId", result.getUserid());
+			session.setAttribute("adminId", result.getUserid());
+			session.setAttribute("usertype", "10");
+			System.out.println("[사이트관리자]: "+result.getUserid());
+		} 
+		System.out.println("[세션에 입력된 아이디]: "+result.getUserid());
+		System.out.println("[세션에서 입력된 회원타입]: "+session.getAttribute("usertype"));
+		return "index";
 	}
 }

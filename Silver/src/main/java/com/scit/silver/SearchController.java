@@ -19,7 +19,6 @@ import com.scit.silver.vo.SilverSearch;
 @Controller
 public class SearchController {
 
-
 	@Autowired
 	SearchDAO dao;
 	

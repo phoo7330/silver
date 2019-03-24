@@ -36,6 +36,8 @@
 		  			종사자 </a>
 		  		<a class="nav-item nav-link" href="inquiry">
 		  			자주하는질문 </a>	
+		  		<a class="nav-item nav-link" href="searchDetail">
+		  			검색상세페이지 </a>	
 			</div>
 		  <!-- 오른쪽 자동 정렬 -->
 		  	<c:if test="${sessionScope.loginId==null}">
