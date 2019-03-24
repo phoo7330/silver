@@ -4,23 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-	<title>실버서퍼에 오신 것을 환영합니다.</title>
+	<title>실버서퍼-기관검색</title>
 	
 	<!-- 인코딩 -->
 	<meta charset="UTF-8">
 	<meta  name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
-
+	<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ynuycabqm2"></script>
+	<script type="text/javascript" src="resources/src/MarkerClustering.js"></script>
+    
 	<!-- Bootstrap CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css">
 	
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
 
+
 </head>
 <body>
-	
-	<!-- 네비게이션 바 -->
+
+<!-- 네비게이션 바 -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
  		<a class="navbar-brand" href="index"><img src="resources/image/box.svg"> 실버서퍼</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
@@ -36,8 +38,6 @@
 		  			종사자 </a>
 		  		<a class="nav-item nav-link" href="inquiry">
 		  			자주하는질문 </a>	
-		  		<a class="nav-item nav-link" href="searchDetail">
-		  			검색상세페이지 </a>	
 			</div>
 		  <!-- 오른쪽 자동 정렬 -->
 		  	<c:if test="${sessionScope.loginId==null}">
@@ -56,45 +56,21 @@
 		  			로그아웃 </a>
 		  	</div>
 			</c:if>
-		  	
-
 		</div>  
 	</nav>	
 
-	<!-- 점보트론 --> 
-	<header class="mathead">
-		<div class="jumbotron">			
-			<div class="row mb-3">
-			    <div class="col-md-7">
-					<h1 class="display-4 my-5 mx-5">전국 요양기관 정보 </h1>
-					<h2 class="display-5 mx-5">실버서퍼에서 확인하세요.</h2>
-			    </div>  
-				<div class="col-md-4">
-					<div class="card border-light bg-light my-5">
-						<div class="card-body">
-							<p class="lead font-weight-normal my-4">원하시는 지역 혹은 기관을 <br> 검색해보세요.</p>
-							
-							<hr class="my-4">
-							
-					        <form class="form-inline" action="search"> 
-					            <div class="form-row col-12">
-									<div class="col-md-10 mb-5 mb-md-0">
-										<input class="form-control h-110 w-100 mr-lg-1 " type="text" placeholder="지역 혹은 기관명 검색을 검색하세요.">
-									</div>
-									<div class="col-md-2">
-										<button class="btn btn-block btn-lg btn-light btn-sm" type="submit"><img src="resources/image/search.svg" ></button>
-									</div> 
-					            </div>
-					        </form>
-						</div>
-					</div>
-				</div>	
-				<div class="col-md-1">
-				</div>
-			</div>  
+<hr class="my-1">
+	
+	<!-- 그래프 -->
+	<div class="container">
+		<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+		    <div class="col-md-6 px-0">
+		      <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
+		      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+		      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
+		    </div>
 		</div>
-	</header>
-
+	</div>
 
 	<!-- jQuery javaScript 추가 -->
 	<script src="resources/js/jquery.min.js"></script>
@@ -104,7 +80,6 @@
 	
 	<!-- Bootstrap javaScript 추가 -->
 	<script src="resources/js/bootstrap.min.js"></script>
-	
 
 </body>
 </html>
