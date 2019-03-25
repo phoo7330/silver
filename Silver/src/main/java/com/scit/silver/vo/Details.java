@@ -10,6 +10,7 @@ public class Details {
 	private String house_number;
 	private String parkinglot;
 	
+	
 	public Details(int detail_seq, int seach_seq, int detail_number, String establishment, String approval,
 			String address, String house_number, String parkinglot) {
 		super();
