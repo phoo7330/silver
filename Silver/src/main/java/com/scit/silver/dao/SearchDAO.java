@@ -41,7 +41,7 @@ public class SearchDAO {
 		SearchMapper mapper = session.getMapper(SearchMapper.class);
 		
 		result = mapper.selectmap3(type);
-
+ 
 		return result;	
 	}
 }

@@ -11,6 +11,6 @@ public interface SearchMapper {
 	
 	public ArrayList<SilverSearch> selectmap2(ArrayList<SilverSearch> SilverSearch);
 	
-	public ArrayList<Details> selectmap3(int type);
+	public ArrayList<Details> selectmap3(int type); 
 
 }

@@ -13,7 +13,7 @@ public class Member {
 	private	String registration;
 	private	String email;
 	private	int warning;
-	
+	 
 	
 	public Member(int code_seq, int type, String userid, String userpwd, String username, String birthday,
 			String gender, String address, String registration, String email, int warning) {
