@@ -69,6 +69,7 @@ public class SearchController {
 		JSONArray mapArray = (JSONArray) jsonParse.parse(maptestJSON);
 		ArrayList<SilverSearch> maptest = mapArray;
 		int totalRecord=dao.countRecord2(maptest);
+		//System.out.println(totalRecord);
 		PageNavigator pn= 
 				new PageNavigator(boardPerPage,pagePerGroup,page,totalRecord);
 		

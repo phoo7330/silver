@@ -221,6 +221,8 @@ function count(data){
 	       count+=cc;
 	       count+='개의 시설을 찾았습니다.';
 	       $('#count').html(count); 
+	return cc;   
+
 }
 
 function pagelist(flag,page){
@@ -260,7 +262,21 @@ function init(flag) {
 function init2(maptest) {
 	ffff=0;
 	jQuery.ajaxSettings.traditional = true;
-	count(maptest);
+	var recount=0;
+	recount = count(maptest);
+	console.log(recount);
+	if(recount==0){
+		var listn='';
+		listn += '<table class="table table-horver">';
+		listn += '<tbody>';
+		listn += '<tr class="onesilver">';
+		listn += '<td scope="row"><p class="text-primary font-weight-bold my-0">검색결과가 없습니다</p></td>';
+		listn += '</tr>';
+		listn += '</tbody>';
+		listn += '</table>';
+		$('#mlist').html(listn);
+		return;
+	}
 	// console.log("maptest : " + JSON.stringify(maptest));
 	//console.log(maptest);  
 	
