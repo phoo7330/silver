@@ -13,10 +13,10 @@ public class Member {
 	private	String registration;
 	private	String email;
 	private	int warning;
-	private int employee_number;
+	
 	
 	public Member(int code_seq, int type, String userid, String userpwd, String username, String birthday,
-			String gender, String address, String registration, String email, int warning, int employee_number) {
+			String gender, String address, String registration, String email, int warning) {
 		super();
 		this.code_seq = code_seq;
 		this.type = type;
@@ -29,7 +29,7 @@ public class Member {
 		this.registration = registration;
 		this.email = email;
 		this.warning = warning;
-		this.employee_number = employee_number;
+		
 	}
 
 	public Member() {
@@ -123,21 +123,10 @@ public class Member {
 	public void setWarning(int warning) {
 		this.warning = warning;
 	}
-
-	public int getEmployee_number() {
-		return employee_number;
-	}
-
-	public void setEmployee_number(int employee_number) {
-		this.employee_number = employee_number;
-	}
-
 	@Override
 	public String toString() {
 		return "Member [code_seq=" + code_seq + ", type=" + type + ", userid=" + userid + ", userpwd=" + userpwd
 				+ ", username=" + username + ", birthday=" + birthday + ", gender=" + gender + ", address=" + address
-				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + ", employee_number="
-				+ employee_number + "]";
-	}
-		
+				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + "]";
+	}		
 }
