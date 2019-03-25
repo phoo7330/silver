@@ -49,7 +49,7 @@ public class SearchController {
 		
 		ArrayList<SilverSearch> result = dao.selectmap(type);
 		
-		//System.out.println(result);
+		//System.out.println(result); 
 		return result;
 	}
 	@RequestMapping(value = "/selectmap2", method = RequestMethod.POST)

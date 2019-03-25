@@ -33,7 +33,7 @@ public class SearchDAO {
       
       SearchMapper mapper = session.getMapper(SearchMapper.class);
       
-      //System.out.println(rb);
+      //System.out.println(rb); 
       result = mapper.selectmap(rb, type);
 
       return result;

@@ -7,7 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import com.scit.silver.vo.Details;
 import com.scit.silver.vo.SilverSearch;
 
-public interface SearchMapper {
+public interface SearchMapper { 
 
 	public ArrayList<SilverSearch> selectmap(int type);
 	
