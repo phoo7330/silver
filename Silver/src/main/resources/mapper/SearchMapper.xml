@@ -58,4 +58,37 @@
 	
 	</select>
 
+<select id="countRecord" parameterType="int" resultType="int">
+	
+	SELECT 
+		COUNT(SEACH_SEQ) 
+	FROM 
+		SILVERSEARCH
+	WHERE
+		TYPE=#{type}
+</select>
+
+<select id="countRecord2" parameterType="SilverSearch" resultType="int">
+	
+	SELECT 
+		COUNT(SEACH_SEQ) 
+	FROM 
+		SILVERSEARCH
+	WHERE
+	LONGITUDE IN 
+	<foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+
+
+        #{item.longitude}
+		
+    </foreach>
+		AND
+		LAUITUDE IN 
+	<foreach collection="list" item="item" index="index"  open="(" separator="," close=")">
+        #{item.lauitude}
+		
+    </foreach>
+</select>
+
+
 </mapper>
