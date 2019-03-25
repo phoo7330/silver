@@ -430,7 +430,7 @@ function write(accidentDeath){
 	        markers.push(marker);
 	        
 	    }
-	    /* console.log(accidentDeath); 
+	    /* console.log(accidentDeath);  
 	    output2(accidentDeath); */
 	    
 	    naver.maps.Event.addListener(map, 'zoom_changed', function() {
