@@ -15,3 +15,31 @@
 	 height: 714px;
 	 width: 100%;
 	}
+
+	#card-all {
+	 height: 10rem; 
+	 width: 18rem;
+	}
+	
+	.card-header {
+	 height: 5rem;
+	 background-color: #e1f1f6; 
+	}
+	
+	.card-body {
+	 height: 5rem;
+	}
+	
+	#nav-under {
+	 height: 3rem;
+	}
+	
+	#card-content {
+		height: 10rem;
+		width: 10rem;
+	}
+	
+	#picture,
+	#map {
+		height: 30rem;
+	}

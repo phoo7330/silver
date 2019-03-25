@@ -46,7 +46,7 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
 	    <span class="navbar-toggler-icon"></span>
 		</button>
-
+		
 		<div class="collapse navbar-collapse justify-content-between" id="navbar">
 		  <!-- 왼쪽 자동 정렬 -->
 		  	<div class="navbar-nav"> 
@@ -82,11 +82,22 @@
 	<!-- 로그인 폼  -->
 	<div class="div-signin text-center">
 	<form class="form-signin" action="selectMember" method="post">
-
+	
+		
 		<img class="mb-4" src="resources/image/login.svg" alt="" width="72" height="72"> 
 		<h1 class="h3 mb-3 font-weight-normal">로그인</h1>
-		<label for="inputEmail" class="sr-only">이메일 주소</label>
-		
+		<!-- 로그인선택 -->
+		<div class="form-check form-check-inline my-2">
+		  <input class="form-check-input" type="radio" name="" id="custom" value="option1">
+		  <label class="form-check-label" for="custom">일반사용자</label>
+		</div>
+		<div class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" name="" id="institution" value="option2">
+		  <label class="form-check-label" for="institution">기관관리자</label>
+		</div>
+
+		<!-- 아이디&비밀번호 -->
+		<label for="inputId" class="sr-only">아이디</label>
 		<input type="text" id="inputEmail" name="userid" value="${member.userid}" class="form-control" placeholder="아이디를 입력하세요." required autofocus>
 		<label for="inputPassword" class="sr-only">비밀번호</label>
 		<input type="password" id="inputPassword" name="userpwd" value="${member.userpwd}" class="form-control" placeholder="비밀번호를 입력하세요." required>
