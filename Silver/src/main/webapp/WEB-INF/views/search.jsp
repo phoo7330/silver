@@ -189,7 +189,7 @@ $(function() {
              //console.log("페이지"+page);
              //console.log("업마크"+upmark);
              //console.log(flag);
-             if(upmark==1){
+             if(upmark==1){ 
             	 //console.log("실행되니?");
             	 pagelist2();
              }else{
