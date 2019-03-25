@@ -273,7 +273,7 @@ function init2(maptest) {
 		listn += '<td scope="row"><p class="text-primary font-weight-bold my-0">검색결과가 없습니다</p></td>';
 		listn += '</tr>';
 		listn += '</tbody>';
-		listn += '</table>';
+		listn += '</table>'; 
 		$('#mlist').html(listn);
 		return;
 	}
