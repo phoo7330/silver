@@ -18,7 +18,7 @@
 	
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
-
+	<link rel="stylesheet" href="resources/css/search.css">
 
 </head>
 <body>
@@ -70,10 +70,28 @@
 				<div class="container">
 				<div class="row mx-1">
 				<!-- 버튼 -->
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="1">요양병원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="2">요양원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="3">방문시설</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="4">치매전담</button>
+				
+				<!-- 
+				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="1">요양병원</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="2">요양원</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="3">방문시설</button>
+				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="4">치매전담</button>
+				 -->
+				
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+				  <label class="btn btn-outline-info btn-sm mx-1 active" btnFlag="1">
+				    <input type="radio" autocomplete="off" checked> 요양병원 
+				  </label>
+				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="2">
+				    <input type="radio" autocomplete="off"> 요양원
+				  </label>
+				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="3">
+				    <input type="radio" autocomplete="off"> 방문시설 
+				  </label>
+				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="4">
+				    <input type="radio" autocomplete="off"> 치매전담 
+				  </label>
+				</div> 
 				
 				<!-- 검색 -->
 				<form class="form-inline mt-2 mt-md-0">
@@ -85,47 +103,47 @@
 			</div>
 		</div>
 	</header>
-	<!-- </div> -->
 	
-	<!-- 지도&검색내역 표기 -->
-	<div class="container">
-	<div class="row mb-2 mx-1 my-1">
-		<div class="col-12 col-md-6">
-	      <div class="row overflow-hidden flex-md-row mb-0 shadow-sm min-vh-100 position-relative">
-			<!-- 지도 API-->
-	        <div id="map" class="col p-4 d-flex flex-column position-static ">
+	<!-- 4. 사진 & 주소  -->
+	<div class="container">	
+		<div class="row my-1">
+			<!-- 지도 -->
+			<div class="col-md-6">
+				<div class="card p-2" id="map">
+				</div>
 			</div>
-	      </div>
-		</div>
-		<div class="col-12 col-md-6">
-	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-500">
-	        <div id="list" class="col p-4 d-flex flex-column position-static">
-	       <!-- 리스트 상단 -->
-	        	<header id="list-header">
-	        		<div class="bg-white text-dark">
-	        			<div class="row ">
+			<!-- 리스트 -->
+			<div class="col-md-6">
+	      		<div class="row no-gutters overflow-hidden flex-md-row">
+	        		<div id="list" class="col mt-1 d-flex flex-column position-static">
+	       				<!-- 리스트 상단 -->
+	        			<header id="list-header">
+	        				<div class="bg-white text-dark">
+	        					<div class="row ">
 		        			<div class="col-sm-8 info">
 		        				<p id="count" class="text-secondary font-weight-bold"></p>
 		        			</div>	
 		        			<div class="col-sm-4">
-		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
+		        				<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
 		        			</div>
-	        			</div>
-	        		<hr class="my-1">
+	        					</div>
+	        				<hr class="my-1">
+	        				</div>
+	        			</header>
+	        			<!-- 리스트 테이블 -->
+						<div id="alllist" style="width:100%; height:600px; overflow:auto">
+				        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
+				    		</table>
+	    				</div>
 	        		</div>
-	        	</header>
-     
-	        <!-- 리스트 테이블 -->
-	       
-			<div id="alllist" style="width:100%; height:600px; overflow:auto">
-	        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
-	    		</table>
-	    	</div>
-	        </div>
-	      </div>
+	      		</div>
+			</div>
 		</div>
 	</div>
-	</div>
+	
+	<br>
+	
+
 
 	<!-- jQuery javaScript 추가 -->
 	<script src="resources/js/jquery.min.js"></script>
@@ -162,22 +180,14 @@ $(function() {
 	});
 	
 	$('#alllist').scroll(function(){
-
         let $alllist = $(this);
-
         let scrollTop = $('#alllist').scrollTop();
-
         let windowHeight = $('#alllist').height();
-
         let documentHeight = $(document).height();
-
         var scrollBottom = $("#alllist").height()- $("#alllist").scrollTop();
-
         var scHeight = $('#alllist').prop('scrollHeight');
-
         
         //console.log(" | scrollTop:" + scrollTop+"바텀"+ scrollBottom);
-
 		var scrollHeight = $('#alllist').height();
 		var scrollPosition = (scrollHeight + scrollTop);
 		//console.log(scrollHeight+"po"+scrollPosition);
@@ -205,7 +215,6 @@ $(function() {
         
         
         // scrollbar의 thumb가 바닥 전 30px까지 도달 하면 리스트를 가져온다.
-
        /* if( scrollTop + 400 > windowHeight ){
                 page += 1;
                 f = 1;
@@ -213,7 +222,6 @@ $(function() {
         } */
 	});
 });
-
 function count(data){
 	var cc = data.length;
 	var count = '';
@@ -222,9 +230,7 @@ function count(data){
 	       count+='개의 시설을 찾았습니다.';
 	       $('#count').html(count); 
 	return cc;   
-
 }
-
 function pagelist(flag,page){
 	$.ajax({
 		url:"pagemap",
@@ -236,7 +242,6 @@ function pagelist(flag,page){
 		success:wlist
 	});
 }
-
 function pagelist2(){
 	$.ajax({
 		url:"selectmap2",
@@ -247,11 +252,8 @@ function pagelist2(){
 		success:wlist
 	});
 }
-
-
 function init(flag) {
 	
-
 	$.ajax({
 		url:"selectmap",
 		type:"get",
@@ -289,11 +291,9 @@ function init2(maptest) {
 	});
 }
 /* function output2(resp){
-
 	//console.log("list : " + makers(resp));
 	//wlist(makers(resp));
 } */
-
 function output(resp){
 	
 	// 2014년 사망사고 위치
@@ -309,11 +309,9 @@ function output(resp){
 	//wlist(makers(resp));
 	count(makers(resp));
 }
-
 //DB에 있는 좌표를 받아옴
 function makers(data){
 var makers_temp = [];
-
 for(var i = 0;i < data.length ;i++){
 	makers_temp.push({
 			"mseq":data[i].seach_seq,
@@ -329,7 +327,6 @@ for(var i = 0;i < data.length ;i++){
 }
 return makers_temp;
 }
-
 function wlist(accidentDeath){
 	if(accidentDeath.length==0){
 		return;
@@ -353,7 +350,7 @@ function wlist(accidentDeath){
 		 }
 			list += '<tbody>';
 			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 5rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
@@ -387,8 +384,6 @@ function wlist(accidentDeath){
 		$('#mlist').append(list);
 	}
 	
-
-
 	  
 	  //클릭한 시설의 정보페이지로 넘어감
 	  $(".onesilver").on('click', function(){
@@ -398,8 +393,6 @@ function wlist(accidentDeath){
 	
 	 
 }
-
-
 //받은 좌표로 마커를 찍음
 function write(accidentDeath){
 	 var map = new naver.maps.Map("map", {
@@ -411,7 +404,6 @@ function write(accidentDeath){
 	            style: naver.maps.ZoomControlStyle.SMALL
 	        }
 	    });
-
 	 	var bounds = map.getBounds(),
 	    southWest = bounds.getSW(),
 	    northEast = bounds.getNE(),
@@ -453,11 +445,9 @@ function write(accidentDeath){
 	        updateMarkers(map, markers);
 	        
 	    });
-
 	    naver.maps.Event.addListener(map, 'dragend', function() {
 	        updateMarkers(map, markers);
 	    });
-
 	    function updateMarkers(map, markers) {
 			page = 1;
 			upmark = 1;
@@ -467,7 +457,6 @@ function write(accidentDeath){
 	        var maptest = [];
 	        
 	        for (var i = 0; i < markers.length; i++) {
-
 	            marker = markers[i]
 	            position = marker.getPosition();
 	           
@@ -496,17 +485,13 @@ function write(accidentDeath){
 	       	
 	      
 	    }
-
 	    function showMarker(map, marker) {
-
 	        if (marker.getMap()) return;
 	        marker.setMap(map);
 	        
 	        
 	    }
-
 	    function hideMarker(map, marker) {
-
 	        if (!marker.getMap()) return;
 	        marker.setMap(null);
 	        
@@ -540,7 +525,6 @@ function write(accidentDeath){
 	            size: N.Size(40, 40),
 	            anchor: N.Point(20, 20)
 	        };
-
 	    var markerClustering = new MarkerClustering({
 	        minClusterSize: 2,
 	        maxZoom: 8,
@@ -554,7 +538,6 @@ function write(accidentDeath){
 	            $(clusterMarker.getElement()).find('div:first-child').text(count);
 	        }
 	    });
-
 	    //클릭한 마커만 오른쪽 리스트에 표시한다
 	    function getClickHandler(seq) {
 	        return function(e) {
@@ -577,14 +560,12 @@ function write(accidentDeath){
 	            }
 	        }
 	    }
-
 	    //마커별로 이벤트를 입력한다.
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 	    }
 	    
 }
-
    
 </script>
 </body>
