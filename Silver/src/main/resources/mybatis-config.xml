@@ -6,6 +6,10 @@
  	<typeAliases>
 		<typeAlias type="com.scit.silver.vo.Member" alias="Member" />
 		<typeAlias type="com.scit.silver.vo.SilverSearch" alias="SilverSearch" />
+		<typeAlias type="com.scit.silver.vo.Details" alias="Details" />
+		<typeAlias type="com.scit.silver.vo.Hospital_Details" alias="Hospital_Details" />
+		<typeAlias type="com.scit.silver.vo.Information_Detail" alias="Information_Detail" />
+	
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml" />
