@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.scit.silver.vo.Details;
 import com.scit.silver.vo.SilverSearch;
 
 public interface SearchMapper {
@@ -17,4 +18,6 @@ public interface SearchMapper {
 	public int countRecord(int type);
 	
 	public int countRecord2(ArrayList<SilverSearch> SilverSearch);
+
+	public ArrayList<Details> selectmap3(int type);
 }
