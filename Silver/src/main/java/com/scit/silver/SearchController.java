@@ -71,7 +71,8 @@ public class SearchController {
 		int totalRecord=dao.countRecord2(maptest);
 		PageNavigator pn= 
 				new PageNavigator(boardPerPage,pagePerGroup,page,totalRecord);
-	
+		
+		
 		
 		result = dao.selectmap2(pn, maptest);
 		//System.out.println(result);

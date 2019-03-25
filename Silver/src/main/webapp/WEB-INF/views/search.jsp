@@ -145,6 +145,8 @@ let isEnd = false;
 var flag = 1;
 var page = 1;
 var ffff = 0;
+var upmark = 0;
+var totalmaptest = [];
 $(function() {
 	init(flag);
 	pagelist(flag,page);
@@ -152,6 +154,8 @@ $(function() {
 	$(".categoryBtn").off("click").on("click",function(){
 		page = 1;
 		ffff = 0;
+		upmark = 0;
+		$("#alllist").scrollTop(0); 
 		flag = $(this).attr("btnFlag");
 		init(flag);
 		pagelist(flag);
@@ -177,13 +181,22 @@ $(function() {
 		var scrollHeight = $('#alllist').height();
 		var scrollPosition = (scrollHeight + scrollTop);
 		//console.log(scrollHeight+"po"+scrollPosition);
-		console.log(scHeight+"dd"+scrollPosition);
+		//console.log(scHeight+"dd"+scrollPosition);
 		if (scHeight==scrollPosition) {
-			 console.log("다음페이지"); 
+			 //console.log("플래그"); 
 			 page += 1;
              ffff = 1;
-             console.log(page);
-             pagelist(flag,page);
+             //console.log("페이지"+page);
+             //console.log("업마크"+upmark);
+             //console.log(flag);
+             if(upmark==1){
+            	 //console.log("실행되니?");
+            	 pagelist2();
+             }else{
+            	 pagelist(flag,page);
+             }
+             
+             
 		}
 		
 			
@@ -218,6 +231,17 @@ function pagelist(flag,page){
 			"type":flag,
 			"page":page
 		},
+		success:wlist
+	});
+}
+
+function pagelist2(){
+	$.ajax({
+		url:"selectmap2",
+		type:"POST",
+		traditional: true,
+		data: {maptestJSON : JSON.stringify(totalmaptest),
+				page: page},
 		success:wlist
 	});
 }
@@ -419,7 +443,9 @@ function write(accidentDeath){
 	    });
 
 	    function updateMarkers(map, markers) {
-
+			page = 1;
+			upmark = 1;
+			$("#alllist").scrollTop(0); 
 	        var mapBounds = map.getBounds();
 	        var marker, position;
 	        var maptest = [];
@@ -439,7 +465,7 @@ function write(accidentDeath){
 		            	"lauitude":position._lat
 		            	   		});
 					
-					
+					totalmaptest = maptest;
 			
 	            } else {
 	                hideMarker(map, marker);
