@@ -7,6 +7,7 @@ public class Information_Detail {
 	private int higher;
 	private int general;
 	
+	
 	public Information_Detail(int information_seq, int treatment, int higher, int general) {
 		super();
 		this.information_seq = information_seq;
