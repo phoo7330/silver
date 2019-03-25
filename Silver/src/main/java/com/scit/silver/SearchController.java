@@ -40,8 +40,7 @@ public class SearchController {
 		
 		
 		ArrayList<SilverSearch> result = dao.selectmap(pn,type);
-		
-		
+
 		return result;
 	}
 	

@@ -22,9 +22,9 @@ public class PageNavigator {
 	
 	if(currentPage<1) {
 		this.currentPage=1;
-	}else if(currentPage>totalPage) {
+	}/*else if(currentPage>totalPage) {
 		this.currentPage=totalPage;
-	}else {
+	}*/else {
 		this.currentPage=currentPage;
 	}
 	//현재그룹=(현재페이지-1)/그룹당페이지수

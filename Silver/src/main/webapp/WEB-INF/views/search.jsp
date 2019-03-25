@@ -171,14 +171,14 @@ $(function() {
 
         var scHeight = $('#alllist').prop('scrollHeight');
 
-        //console.log("스크롤길이:"+scHeight+"스크롤탑"+scrollTop);
+        
         //console.log(" | scrollTop:" + scrollTop+"바텀"+ scrollBottom);
 
 		var scrollHeight = $('#alllist').height();
-		var scrollPosition = $('#alllist').height() + $('#alllist').scrollTop();
+		var scrollPosition = (scrollHeight + scrollTop);
 		//console.log(scrollHeight+"po"+scrollPosition);
-		//console.log(scHeight+"dd"+scrollPosition);
-		if (scHeight<scrollPosition) {
+		console.log(scHeight+"dd"+scrollPosition);
+		if (scHeight==scrollPosition) {
 			 console.log("다음페이지"); 
 			 page += 1;
              ffff = 1;
@@ -291,7 +291,12 @@ return makers_temp;
 }
 
 function wlist(accidentDeath){
-	var list = '';
+	if(accidentDeath.length==0){
+		return;
+	}
+	
+	if (ffff == 0) {
+		var list = '';
 		list += '<table class="table table-horver">';
 	 
 		
@@ -314,13 +319,36 @@ function wlist(accidentDeath){
 			
 	 });
 			list += '</table>';
-		//consol.log(data);
-		//alert(list); 
-		if (ffff == 0) {
-			$('#mlist').html(list);
-		} else {
-			$('#mlist').append(list);
-		}
+		$('#mlist').html(list);
+	} else {
+		var list = '';
+		
+	 
+		
+	$.each(accidentDeath, function (index, item){
+		 var siltype = null;
+		 if(item.type==1){
+			 siltype = "요양병원";			 
+		 } else if(item.type==2){
+			 siltype = "요양원";			 
+		 } else if(item.type==3){
+			 siltype = "방문시설";			 
+		 } else if(item.type==4){
+			 siltype = "치매전담";			 
+		 }
+			list += '<tbody>';
+			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '</tr>';
+			list += '</tbody>';
+			
+	 });
+			
+		$('#mlist').append(list);
+	}
+	
+
+
 	  
 	  //클릭한 시설의 정보페이지로 넘어감
 	  $(".onesilver").on('click', function(){
