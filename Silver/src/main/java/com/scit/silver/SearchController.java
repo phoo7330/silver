@@ -92,7 +92,7 @@ public class SearchController {
 	
 	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
 	public String searchDetail(int seach_seq,Model model) {
-
+		System.out.println("최신작업");
 		System.out.println(seach_seq);
 		if(seach_seq==1) {
 			ArrayList<SilverSearchHospital_Details> silver234 = dao.SearchDetail2(seach_seq);
