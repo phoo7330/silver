@@ -18,7 +18,7 @@
 	
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
-	<link rel="stylesheet" href="resources/css/search.css">
+
 
 </head>
 <body>
@@ -79,17 +79,17 @@
 				 -->
 				
 				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-outline-info btn-sm mx-1 active" btnFlag="1">
-				    <input type="radio" autocomplete="off" checked> 요양병원 
+				  <label class="btn btn-outline-info btn-sm mx-1 active">
+				    <input type="radio" name="categoryBtn" value="1" autocomplete="off" checked> 요양병원 
 				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="2">
-				    <input type="radio" autocomplete="off"> 요양원
+				  <label class="btn btn-outline-info btn-sm mx-1">
+				    <input type="radio" name="categoryBtn" value="2" autocomplete="off"> 요양원
 				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="3">
-				    <input type="radio" autocomplete="off"> 방문시설 
+				  <label class="btn btn-outline-info btn-sm mx-1">
+				    <input type="radio" name="categoryBtn" value="3" autocomplete="off"> 방문시설 
 				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1" btnFlag="4">
-				    <input type="radio" autocomplete="off"> 치매전담 
+				  <label class="btn btn-outline-info btn-sm mx-1">
+				    <input type="radio" name="categoryBtn" value="4" autocomplete="off"> 치매전담 
 				  </label>
 				</div> 
 				
@@ -104,46 +104,45 @@
 		</div>
 	</header>
 	
-	<!-- 4. 사진 & 주소  -->
-	<div class="container">	
-		<div class="row my-1">
-			<!-- 지도 -->
-			<div class="col-md-6">
-				<div class="card p-2" id="map">
-				</div>
+	<!-- 지도&검색내역 표기 -->
+	<div class="container">
+	<div class="row mb-2 mx-1 my-1">
+		<div class="col-12 col-md-6" style="background-color: green; height: 32rem;">
+	      <div class="row overflow-hidden flex-md-row mb-0 shadow-sm min-vh-100 position-relative">
+			<!-- 지도 API-->
+	        <div class="col p-4 d-flex flex-column position-static ">
 			</div>
-			<!-- 리스트 -->
-			<div class="col-md-6">
-	      		<div class="row no-gutters overflow-hidden flex-md-row">
-	        		<div id="list" class="col mt-1 d-flex flex-column position-static">
-	       				<!-- 리스트 상단 -->
-	        			<header id="list-header">
-	        				<div class="bg-white text-dark">
-	        					<div class="row ">
+	      </div>
+		</div>
+		<div class="col-12 col-md-6" style="background-color: blue; height: 32rem;">
+	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-500">
+	        <div id="list" class="col p-4 d-flex flex-column position-static">
+	       <!-- 리스트 상단 -->
+	        	<header id="list-header">
+	        		<div class="bg-white text-dark">
+	        			<div class="row ">
 		        			<div class="col-sm-8 info">
 		        				<p id="count" class="text-secondary font-weight-bold"></p>
 		        			</div>	
 		        			<div class="col-sm-4">
-		        				<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
+		        			<button type="button" class="btn btn-sm btn-info float-right">엑셀로 출력</button>
 		        			</div>
-	        					</div>
-	        				<hr class="my-1">
-	        				</div>
-	        			</header>
-	        			<!-- 리스트 테이블 -->
-						<div id="alllist" style="width:100%; height:600px; overflow:auto">
-				        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
-				    		</table>
-	    				</div>
+	        			</div>
+	        		<hr class="my-1">
 	        		</div>
-	      		</div>
-			</div>
+	        	</header>
+     
+	        <!-- 리스트 테이블 -->
+	       
+			<div id="alllist" style="width:100%; height:600px; overflow:auto">
+	        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
+	    		</table>
+	    	</div>
+	        </div>
+	      </div>
 		</div>
 	</div>
-	
-	<br>
-	
-
+	</div>
 
 	<!-- jQuery javaScript 추가 -->
 	<script src="resources/js/jquery.min.js"></script>
@@ -169,12 +168,12 @@ $(function() {
 	init(flag);
 	pagelist(flag,page);
 	
-	$(".categoryBtn").off("click").on("click",function(){
+	$("input:radio[name=categoryBtn]").off("click").on("click",function(){
 		page = 1;
 		ffff = 0;
 		upmark = 0;
 		$("#alllist").scrollTop(0); 
-		flag = $(this).attr("btnFlag");
+		flag = $(this).attr("value");
 		init(flag);
 		pagelist(flag);
 	});
@@ -350,7 +349,7 @@ function wlist(accidentDeath){
 		 }
 			list += '<tbody>';
 			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 5rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
