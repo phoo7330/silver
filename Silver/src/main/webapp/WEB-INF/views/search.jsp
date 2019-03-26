@@ -103,7 +103,7 @@
 			</div>
 		</div>
 	</header>
-	
+
 	<!-- 지도&검색내역 표기 -->
 	<div class="container">	
 		<div class="row my-1">
