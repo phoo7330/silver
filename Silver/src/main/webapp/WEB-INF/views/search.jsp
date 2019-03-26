@@ -74,7 +74,7 @@
 					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="2">요양원</button>
 					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="3">방문시설</button>
 					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="4">치매전담</button>
-				
+					
 				<!-- 검색 -->
 				<form class="form-inline mt-2 mt-md-0">
 					<input class="form-control mr-sm-2 form-control-sm mx-2" type="text" placeholder="시설명 검색" aria-label="search">
