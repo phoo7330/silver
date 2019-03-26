@@ -1,5 +1,6 @@
 package com.scit.silver.vo;
 
+
 public class Member {
 	
 	private int code_seq;

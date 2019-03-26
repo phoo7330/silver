@@ -1,11 +1,13 @@
 package com.scit.silver.vo;
 
+
 public class Information_Detail {
 
 	private int information_seq;
 	private int treatment;
 	private int higher;
 	private int general;
+	
 	
 	public Information_Detail(int information_seq, int treatment, int higher, int general) {
 		super();

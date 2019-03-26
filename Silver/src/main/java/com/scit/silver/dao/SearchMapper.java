@@ -1,5 +1,6 @@
 package com.scit.silver.dao;
 
+
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
@@ -20,3 +21,4 @@ public interface SearchMapper {
 
 	public ArrayList<Details> selectmap3(int type);
 }
+ 

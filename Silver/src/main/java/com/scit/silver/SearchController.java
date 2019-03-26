@@ -1,6 +1,7 @@
 package com.scit.silver;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,6 +20,7 @@ import com.scit.silver.dao.SearchDAO;
 import com.scit.silver.vo.SilverSearch;
 import com.test.fileTest.util.PageNavigator;
 
+
 @Controller
 public class SearchController {
 
@@ -32,7 +34,7 @@ public class SearchController {
 			Model model,
 			@RequestParam(defaultValue="1")int page,
 			@RequestParam(defaultValue="")int type) {
-		
+		 
 		int totalRecord=dao.countRecord(type);
 		
 		PageNavigator pn= 
@@ -40,8 +42,7 @@ public class SearchController {
 		
 		
 		ArrayList<SilverSearch> result = dao.selectmap(pn,type);
-		
-		
+
 		return result;
 	}
 	
@@ -50,7 +51,7 @@ public class SearchController {
 		
 		ArrayList<SilverSearch> result = dao.selectmap(type);
 		
-		//System.out.println(result);
+		//System.out.println(result);  
 		return result;
 	}
 	@RequestMapping(value = "/selectmap2", method = RequestMethod.POST)
@@ -70,9 +71,11 @@ public class SearchController {
 		JSONArray mapArray = (JSONArray) jsonParse.parse(maptestJSON);
 		ArrayList<SilverSearch> maptest = mapArray;
 		int totalRecord=dao.countRecord2(maptest);
+		//System.out.println(totalRecord);
 		PageNavigator pn= 
 				new PageNavigator(boardPerPage,pagePerGroup,page,totalRecord);
-	
+		
+		
 		
 		result = dao.selectmap2(pn, maptest);
 		//System.out.println(result);
@@ -84,4 +87,12 @@ public class SearchController {
 		return result;
 	}
 	
+	
+	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
+	public String searchDetail(int seach_seq) {
+
+		System.out.println(seach_seq);
+		//오늘 할것
+		return "redirect:/search";
+	}
 }

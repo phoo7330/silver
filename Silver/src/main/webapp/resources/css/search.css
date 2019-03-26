@@ -5,15 +5,12 @@
 	 background-color: black;
 	}
 	
-	#map {
-	 background-color: green;
-	 height: 715px;
+	#map-api {
+	 height: 520px;
 	}
 	
 	#list {
-	 background-color: blue;
-	 height: 714px;
-	 width: 100%;
+	 height: 520px;
 	}
 
 	#card-all {
@@ -40,6 +37,7 @@
 	}
 	
 	#picture,
-	#map {
-		height: 30rem;
+	#map,
+	#list {
+		height: 33rem;
 	}

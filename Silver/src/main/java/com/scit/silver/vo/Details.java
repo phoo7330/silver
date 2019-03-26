@@ -1,5 +1,6 @@
 package com.scit.silver.vo;
 
+
 public class Details {
 	private int detail_seq;
 	private int seach_seq;
@@ -9,6 +10,7 @@ public class Details {
 	private String address;
 	private String tel;
 	private String parkinglot;
+	
 	
 	public Details(int detail_seq, int seach_seq, int detail_number, String establishment, String approval,
 			String address, String tel, String parkinglot) {

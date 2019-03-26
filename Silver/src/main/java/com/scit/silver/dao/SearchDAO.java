@@ -1,5 +1,6 @@
 package com.scit.silver.dao;
 
+
 import java.util.ArrayList;
 
 import org.apache.ibatis.session.RowBounds;
@@ -23,7 +24,7 @@ public class SearchDAO {
       SearchMapper mapper = session.getMapper(SearchMapper.class);
       
       result = mapper.selectmap(type);
-
+ 
       return result;
    }
    public ArrayList<SilverSearch> selectmap(PageNavigator pn, int type){

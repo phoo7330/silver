@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -25,10 +26,11 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
-	public String searchDetail(Locale locale, Model model) {
+	
+	
+	@RequestMapping(value = "/searchDetail2", method = RequestMethod.GET)
+	public String searchDetail2(Locale locale, Model model) {
 
-		return "searchDetail";
+		return "searchDetail2";
 	}
-
 }

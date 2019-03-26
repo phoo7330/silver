@@ -21,7 +21,6 @@
 	</c:if>
 
 
-
 <form action="insertTest">
 id:<input type="text" name="id">
 pw:<input type="password" name="pw">

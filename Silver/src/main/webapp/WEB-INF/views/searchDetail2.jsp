@@ -111,20 +111,15 @@
 	</nav>
 	
 	<!--  
-	private int hp_details_seq;
-	private int seach_seq;
-	private int information_seq;
-	private	String establishment; // 설립정보
-	private String hp_service; // 봉사활동(?)
-	private String protection; // 간병형태(?)
-	private String location; // 입지정보 
-	private String religion; // 종교 프로그램 여부 (Yes or not)
-	private String hospital_tel; // 전화번호 
-	private String hp_address; // 주소 - 컬럼 따로(4) 
-	private String holliday; // 진료시간 - 컬럼 따로 (2) 
-	private String lunchtime; // 점심시간 - 컬럼 따로 (2)
-	private String receipttime; // 접수시간 - 컬럼 따로 (2)
-	private String facilityinformation; // 시설정보 - 컬럼 따로 (3)
+   public class Details {
+   private int detail_seq;
+   private int seach_seq;
+   private int detail_number; // 기관일련번호 /1 
+   private String establishment; // 설립일 / 1 
+   private String approval; // 승인일 / 1 
+   private String address; // 주소 / 4 
+   private String house_number; // 연락처 / 1 
+   private String parkinglot; // 주차시설
 	-->
 	
 	<!-- 1. 기본정보 탭  -->
@@ -134,12 +129,25 @@
 		</div>
 		<!-- 내용 -->
 		<div class="row">
-			<!-- 설립정보 -->
+			<!-- 기관일련번호 -->
 			<div class="col-md-2">
 				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
 					<div class="card mb-1 shadow-sm card border-info" id="card-content">
 						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">설립정보</div>
+							<div class="mb-1 my-3 text-musted">기관일련번호</div>
+						</div>
+						<div class="card-body">
+							<div class="mb-1 text-musted">"detail_number"</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 설립일 -->
+			<div class="col-md-2">
+				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
+					<div class="card mb-1 shadow-sm card border-info" id="card-content">
+						<div class="card-header">
+							<div class="mb-1 my-3 text-musted">설립일</div>
 						</div>
 						<div class="card-body">
 							<div class="mb-1 text-musted">"establishment"</div>
@@ -147,116 +155,43 @@
 					</div>
 				</div>
 			</div>
-			<!-- 봉사활동 -->
+			<!-- 승인일 -->
 			<div class="col-md-2">
 				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
 					<div class="card mb-1 shadow-sm card border-info" id="card-content">
 						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">봉사활동</div>
+							<div class="mb-1 my-3 text-musted">승인일</div>
 						</div>
 						<div class="card-body">
-							<div class="mb-1 text-musted">"hp_service"</div>
+							<div class="mb-1 text-musted">"approval"</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- 간병형태 -->
+			<!-- 연락처 -->
 			<div class="col-md-2">
 				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
 					<div class="card mb-1 shadow-sm card border-info" id="card-content">
 						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">간병형태</div>
+							<div class="mb-1 my-3 text-musted">연락처</div>
 						</div>
 						<div class="card-body">
-							<div class="mb-1 text-musted">"protection"</div>
+							<div class="mb-1 text-musted">"house_number"</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- 입지정보 -->
+	
 			<div class="col-md-2">
-				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
-					<div class="card mb-1 shadow-sm card border-info" id="card-content">
-						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">입지정보</div>
-						</div>
-						<div class="card-body">
-							<div class="mb-1 text-musted">"location"</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<!-- 종교활동 -->
+
 			<div class="col-md-2">
-				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
-					<div class="card mb-1 shadow-sm card border-info" id="card-content">
-						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">종교활동</div>
-						</div>
-						<div class="card-body">
-							<div class="mb-1 text-musted">"religion"</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<!-- 전화번호 -->
-			<div class="col-md-2">
-				<div class="card-deck p-1 d-flex flex-column position-static text-center" >
-					<div class="card mb-1 shadow-sm card border-info" id="card-content">
-						<div class="card-header">
-							<div class="mb-1 my-3 text-musted">전화번호</div>
-						</div>
-						<div class="card-body">
-							<div class="mb-1 text-musted">"hp_address"</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div><br>
 
-	<!-- 2. 진료시간  -->
-	<div class="container">
-		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-		<h4 class="n1 text-secondary"><small>진료시간</small></h4>
-		</div>
-		<!-- 내용 -->
-		<div class="row">
-			<!-- 쉬는날 -->
-			<div class="col-md-4">
-          		<div class="card mb-3 shadow-sm align-items-center">
-					<img class="mb-2 mt-3" src="resources/image/clock.svg" alt="" width="72" height="72"> 
-					<div class="mb-1 my-3 text-musted">쉬는날</div>
-				<div class="card-body">
-	              	<div class="mb-1 text-musted">"holliday"</div>
-				</div>
-				</div>
-			</div>
-			<!-- 점심시간 -->
-			<div class="col-md-4">
-          		<div class="card mb-3 shadow-sm align-items-center">
-					<img class="mb-2 mt-3" src="resources/image/coffee.svg" alt="" width="72" height="72"> 
-					<div class="mb-1 my-3 text-musted">점심시간</div>
-				<div class="card-body">
-	              	<div class="mb-1 text-musted">"lunchtime"</div>
-				</div>
-				</div>
-			</div>
-			<!-- 접수시간 -->
-			<div class="col-md-4">
-          		<div class="card mb-3 shadow-sm align-items-center">
-					<img class="mb-2 mt-3" src="resources/image/calendar.svg" alt="" width="72" height="72"> 
-					<div class="mb-1 my-3 text-musted">접수시간</div>
-				<div class="card-body">
-	              	<div class="mb-1 text-musted">"receipttime"</div>
-				</div>
-				</div>
-			</div>
-		</div>	
-	</div>		
-	<br>
-
-	<!-- 3. 시설정보 탭  -->
+	<!-- 2. 주차시설 탭  -->
 	<div class="container">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 		<h4 class="n1 text-secondary"><small>시설정보</small></h4>
@@ -268,7 +203,7 @@
 				<img class="mb-1 mt-3" src="resources/image/info.svg">
 				</div>
 				<div class="p-1 align-self-end">
-				<div class="mb-1 my-3 text-musted">"facilityinformation"</div>
+				<div class="mb-1 my-3 text-musted">"parkinglot"</div>
 				</div>
 			</div>
 		</div>
@@ -287,7 +222,7 @@
 				<img class="mb-3 my-3" src="resources/image/mappin.svg">
 				</div>
 				<div class="p-1 align-self-end">
-				<div class="mb-3 my-3 text-musted">"hp_address"</div>
+				<div class="mb-3 my-3 text-musted">"address"</div>
 				</div>
 			</div>
 		</div>
