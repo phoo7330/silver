@@ -116,8 +116,7 @@
 		where 
 			A.SEACH_SEQ = B.SEACH_SEQ	
 		ORDER BY
-			GRADE
-			 
+			GRADE		 
 	</select>	
 		 
 </mapper>
