@@ -93,6 +93,7 @@ public class SearchController {
 	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
 	public String searchDetail(int seach_seq,Model model) {
 		System.out.println("최신작업");
+		System.out.println("타입받아와야합니다");
 		System.out.println(seach_seq);
 		SilverSearch silver = null;
 		int type = silver.getType();
@@ -110,6 +111,7 @@ public class SearchController {
 			model.addAttribute("message", "해당하는 기관이 없습니다.");
 			System.out.println("해당하는 기관이 없습니다.");
 			return "redirect:/search";
+			
 		}
 	}
 }
