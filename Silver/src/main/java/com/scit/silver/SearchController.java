@@ -94,18 +94,21 @@ public class SearchController {
 	public String searchDetail(int seach_seq,Model model) {
 		System.out.println("최신작업");
 		System.out.println(seach_seq);
-		if(seach_seq==1) {
-			ArrayList<SilverSearchHospital_Details> silver234 = dao.SearchDetail2(seach_seq);
-			System.out.println(silver234);
-			model.addAttribute(silver234);
+		SilverSearch silver = null;
+		int type = silver.getType();
+		if(type==1) {
+			SilverSearchHospital_Details silver1 = dao.SearchDetail2(type);
+			System.out.println(silver);
+			model.addAttribute(silver);
 			return "searchDetail";
-		} else if(seach_seq==2 ||seach_seq==3||seach_seq==4){
-			ArrayList<SilverSearchDetails> silver1 = dao.SearchDetail(seach_seq);
-			System.out.println(silver1);
-			model.addAttribute(silver1);
+		} else if(type==2 ||type==3||type==4){
+			SilverSearchDetails silver2 = dao.SearchDetail(type);
+			System.out.println(silver2);
+			model.addAttribute(silver2);
 			return "searchDetail2";
 		} else {
 			model.addAttribute("message", "해당하는 기관이 없습니다.");
+			System.out.println("해당하는 기관이 없습니다.");
 			return "redirect:/search";
 		}
 	}

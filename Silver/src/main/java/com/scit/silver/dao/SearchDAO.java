@@ -89,8 +89,8 @@ public class SearchDAO {
 		return result;	
 	}
    
-   public ArrayList<SilverSearchDetails> SearchDetail(int seach_seq){
-	   ArrayList<SilverSearchDetails> result = null;
+   public SilverSearchDetails SearchDetail(int seach_seq){
+	   SilverSearchDetails result = null;
 	   
 	   SearchMapper mapper = session.getMapper(SearchMapper.class);
 	   
@@ -99,8 +99,8 @@ public class SearchDAO {
 	   return result;
    }
    
-   public ArrayList<SilverSearchHospital_Details> SearchDetail2(int seach_seq){
-	   ArrayList<SilverSearchHospital_Details> result = null;
+   public SilverSearchHospital_Details SearchDetail2(int seach_seq){
+	   SilverSearchHospital_Details result = null;
 	   
 	   SearchMapper mapper = session.getMapper(SearchMapper.class);
 	   

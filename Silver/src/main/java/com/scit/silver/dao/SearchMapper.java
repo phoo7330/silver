@@ -24,8 +24,8 @@ public interface SearchMapper {
 
 	public ArrayList<Details> selectmap3(int type);
 	
-	public ArrayList<SilverSearchDetails> SearchDetail(int seach_seq);
+	public SilverSearchDetails SearchDetail(int seach_seq);
 	
-	public ArrayList<SilverSearchHospital_Details> SearchDetail2(int seach_seq);
+	public SilverSearchHospital_Details SearchDetail2(int seach_seq);
 }
  
