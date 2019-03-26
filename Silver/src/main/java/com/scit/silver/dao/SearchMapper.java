@@ -21,3 +21,4 @@ public interface SearchMapper {
 
 	public ArrayList<Details> selectmap3(int type);
 }
+ 

@@ -32,7 +32,7 @@ public class SearchController {
 			Model model,
 			@RequestParam(defaultValue="1")int page,
 			@RequestParam(defaultValue="")int type) {
-		
+		 
 		int totalRecord=dao.countRecord(type);
 		
 		PageNavigator pn= 
