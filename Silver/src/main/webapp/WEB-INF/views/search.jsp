@@ -7,6 +7,7 @@
 	<title>실버서퍼-기관검색</title>
 	
 	<!-- 인코딩 -->
+	
 	<meta charset="UTF-8">
 	<meta  name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
  	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
