@@ -1,6 +1,7 @@
 package com.scit.silver;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -86,4 +87,12 @@ public class SearchController {
 		return result;
 	}
 	
+	
+	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
+	public String searchDetail(int seach_seq) {
+
+		System.out.println(seach_seq);
+		
+		return "redirect:/search";
+	}
 }
