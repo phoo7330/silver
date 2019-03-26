@@ -6,8 +6,7 @@
 <head>
 	<title>실버서퍼-기관검색</title>
 	
-	<!-- 인코딩  -->
-	
+	<!-- 인코딩 -->
 	<meta charset="UTF-8">
 	<meta  name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
  	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
@@ -172,8 +171,8 @@ $(function() {
 		var scrollHeight = $('#alllist').height();
 		var scrollPosition = (scrollHeight + scrollTop);
 		//console.log(scrollHeight+"po"+scrollPosition);
-		//console.log(scHeight+"dd"+scrollPosition);
-		if (scHeight==scrollPosition) {
+		console.log(scHeight+"dd"+scrollPosition);
+		if (scHeight-3<scrollPosition) {
 			 //console.log("플래그"); 
 			 page += 1;
              ffff = 1;
@@ -351,7 +350,7 @@ function wlist(accidentDeath){
 		 }
 			list += '<tbody>';
 			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 5rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
