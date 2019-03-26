@@ -58,6 +58,7 @@
 	
 	</select>
 
+
 <select id="countRecord" parameterType="int" resultType="int">
 	
 	SELECT 
@@ -90,8 +91,7 @@
     </foreach>
 </select>
 
-
-	<!--   시설db 정보 불러오기 sql   -->
+<!--   시설db 정보 불러오기 sql   -->
 	<select id="selectmap3" parameterType="int" resultType="Details">
 		 SELECT 
 			A.SEACH_SEQ
@@ -118,6 +118,5 @@
 		ORDER BY
 			GRADE
 			 
-	</select>	
-		 
+	</select>
 </mapper>

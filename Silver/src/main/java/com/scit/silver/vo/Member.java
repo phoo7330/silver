@@ -13,6 +13,8 @@ public class Member {
 	private	String registration;
 	private	String email;
 	private	int warning;
+
+	
 	public Member(int code_seq, int type, String userid, String userpwd, String username, String birthday,
 			String gender, String address, String registration, String email, int warning) {
 		super();
@@ -27,6 +29,7 @@ public class Member {
 		this.registration = registration;
 		this.email = email;
 		this.warning = warning;
+
 	}
 	public Member() {
 		super();
@@ -102,7 +105,6 @@ public class Member {
 		return "Member [code_seq=" + code_seq + ", type=" + type + ", userid=" + userid + ", userpwd=" + userpwd
 				+ ", username=" + username + ", birthday=" + birthday + ", gender=" + gender + ", address=" + address
 				+ ", registration=" + registration + ", email=" + email + ", warning=" + warning + "]";
+
 	}
-	 
-	
 }
