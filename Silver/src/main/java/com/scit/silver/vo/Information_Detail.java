@@ -1,5 +1,6 @@
 package com.scit.silver.vo;
 
+
 public class Information_Detail {
 
 	private int information_seq;

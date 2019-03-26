@@ -19,6 +19,7 @@ import com.scit.silver.dao.SearchDAO;
 import com.scit.silver.vo.SilverSearch;
 import com.test.fileTest.util.PageNavigator;
 
+
 @Controller
 public class SearchController {
 

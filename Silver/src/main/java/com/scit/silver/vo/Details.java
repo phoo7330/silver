@@ -1,5 +1,6 @@
 package com.scit.silver.vo;
 
+
 public class Details {
 	private int detail_seq;
 	private int seach_seq;

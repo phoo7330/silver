@@ -1,5 +1,6 @@
 package com.scit.silver.vo;
 
+
 public class Hospital_Details {
 	private int hp_details_seq;
 	private int seach_seq;

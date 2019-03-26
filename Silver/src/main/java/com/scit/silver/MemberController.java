@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.scit.silver.dao.MemberDAO;
 import com.scit.silver.vo.Member;
 
+
 @Controller
 public class MemberController {
 

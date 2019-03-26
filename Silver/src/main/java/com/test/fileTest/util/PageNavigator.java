@@ -1,5 +1,6 @@
 package com.test.fileTest.util;
 
+
 public class PageNavigator {
 	/* 조건 */
 	private int boardPerPage;// 페이지당 글 목록수
