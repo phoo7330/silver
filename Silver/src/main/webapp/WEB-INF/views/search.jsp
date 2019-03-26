@@ -18,7 +18,7 @@
 	
 	<!-- Custom CSS 추가 -->
 	<link rel="stylesheet" href="resources/css/custom.css">
-
+	<link rel="stylesheet" href="resources/css/search.css">
 
 </head>
 <body>
@@ -105,18 +105,17 @@
 	</header>
 	
 	<!-- 지도&검색내역 표기 -->
-	<div class="container">
-	<div class="row mb-2 mx-1 my-1">
-		<div class="col-12 col-md-6" style="background-color: green; height: 32rem;">
-	      <div class="row overflow-hidden flex-md-row mb-0 shadow-sm min-vh-100 position-relative">
-			<!-- 지도 API-->
-	        <div class="col p-4 d-flex flex-column position-static ">
+	<div class="container">	
+		<div class="row my-1">
+			<!-- 지도 -->
+			<div class="col-md-6">
+				<div class="card p-2" id="map">
+				</div>
 			</div>
-	      </div>
-		</div>
-		<div class="col-12 col-md-6" style="background-color: blue; height: 32rem;">
-	      <div class="row no-gutters overflow-hidden flex-md-row mb-4 min-vh-500">
-	        <div id="list" class="col p-4 d-flex flex-column position-static">
+		<!-- 리스트 -->
+			<div class="col-md-6">
+	      		<div class="row no-gutters overflow-hidden flex-md-row">
+	        		<div id="list" class="col mt-1 d-flex flex-column position-static">
 	       <!-- 리스트 상단 -->
 	        	<header id="list-header">
 	        		<div class="bg-white text-dark">
