@@ -91,7 +91,8 @@
 </select>
 
 
-	<!--   시설db 정보 불러오기 sql   -->
+	
+<!--   시설db 정보 불러오기 sql   -->
 	<select id="selectmap3" parameterType="int" resultType="Details">
 		 SELECT 
 			A.SEACH_SEQ
@@ -116,7 +117,7 @@
 		where 
 			A.SEACH_SEQ = B.SEACH_SEQ	
 		ORDER BY
-			GRADE		 
-	</select>	
-		 
+			GRADE
+			 
+	</select>
 </mapper>
