@@ -92,9 +92,7 @@ public class SearchController {
 	public String searchDetail(int seach_seq) {
 
 		System.out.println(seach_seq);
-		if(seach_seq==0) {
-			return "searchDetail2";
-		}
+		
 		return "redirect:/search";
 	}
 }
