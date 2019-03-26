@@ -109,7 +109,7 @@
 			,B.ESTABLISHMENT
 			,B.APPROVAL
 			,B.ADDRESS
-			,B.HOUSE_NUMBER
+			,B.TEL
 			,B.PARKINGLOT
 		from 
 			SILVERSEARCH A 
@@ -117,7 +117,41 @@
 		where 
 			A.SEACH_SEQ = B.SEACH_SEQ	
 		ORDER BY
-			GRADE
+			GRADE		
 			 
 	</select>
+<select id="selectmap3" parameterType="int" resultType="Details">	
+	select 
+			A.SEACH_SEQ
+			,A.TYPE
+			,A.AREAA
+			,A.AREAB
+			,A.AREAC
+			,A.SILVERNAME
+			,A.SERVICE
+			,A.GRADE
+			,A.LAUITUDE
+			,A.LONGITUDE
+            ,C.Establishment
+            ,C.HP_service
+            ,C.Protection
+            ,C.Location
+            ,C.Religion
+            ,C.Hospital_tel
+            ,C.hp_address
+            ,C.holiday
+            ,C.lunchTime
+            ,C.ReceiptTime
+            ,C.Facilityinformation
+         from 
+             SILVERSEARCH A 	
+            ,Hospital_details C
+    where 
+			A.SEACH_SEQ = C.SEACH_SEQ
+	and
+			A.seach_seq = #{type}
+        order by 
+            seach_seq;
+            
+     </select>
 </mapper>

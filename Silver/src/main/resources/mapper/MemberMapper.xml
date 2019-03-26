@@ -61,8 +61,5 @@
 		USERPWD=#{userpwd}
   
   </select>
-  
-  
-  
-  
+
   </mapper>
