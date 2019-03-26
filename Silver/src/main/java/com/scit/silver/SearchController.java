@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.scit.silver.dao.SearchDAO;
 import com.scit.silver.vo.SilverSearch;
+import com.scit.silver.vo.SilverSearchDetails;
+import com.scit.silver.vo.SilverSearchHospital_Details;
 import com.test.fileTest.util.PageNavigator;
 
 
@@ -89,10 +91,22 @@ public class SearchController {
 	
 	
 	@RequestMapping(value = "/searchDetail", method = RequestMethod.GET)
-	public String searchDetail(int seach_seq) {
+	public String searchDetail(int seach_seq,Model model) {
 
 		System.out.println(seach_seq);
-		
-		return "redirect:/search";
+		if(seach_seq==1) {
+			ArrayList<SilverSearchHospital_Details> silver234 = dao.SearchDetail2(seach_seq);
+			System.out.println(silver234);
+			model.addAttribute(silver234);
+			return "searchDetail";
+		} else if(seach_seq==2 ||seach_seq==3||seach_seq==4){
+			ArrayList<SilverSearchDetails> silver1 = dao.SearchDetail(seach_seq);
+			System.out.println(silver1);
+			model.addAttribute(silver1);
+			return "searchDetail2";
+		} else {
+			model.addAttribute("message", "해당하는 기관이 없습니다.");
+			return "redirect:/search";
+		}
 	}
 }

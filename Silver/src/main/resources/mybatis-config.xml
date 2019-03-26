@@ -10,12 +10,14 @@
 		<typeAlias type="com.scit.silver.vo.Details" alias="Details" />
 		<typeAlias type="com.scit.silver.vo.Hospital_Details" alias="Hospital_Details" />
 		<typeAlias type="com.scit.silver.vo.Information_Detail" alias="Information_Detail" />
+		<typeAlias type="com.scit.silver.vo.SilverSearchDetails" alias="SilverSearchDetails" />
+		<typeAlias type="com.scit.silver.vo.SilverSearchHospital_Details" alias="SilverSearchHospital_Details" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml" />
 		<mapper resource="mapper/SearchMapper.xml" />
 		
 		
-		
+
 	</mappers>
 </configuration>

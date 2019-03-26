@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.scit.silver.vo.Details;
 import com.scit.silver.vo.SilverSearch;
+import com.scit.silver.vo.SilverSearchDetails;
+import com.scit.silver.vo.SilverSearchHospital_Details;
 import com.test.fileTest.util.PageNavigator;
 
 @Repository
@@ -86,4 +88,26 @@ public class SearchDAO {
 
 		return result;	
 	}
+   
+   public ArrayList<SilverSearchDetails> SearchDetail(int seach_seq){
+	   ArrayList<SilverSearchDetails> result = null;
+	   
+	   SearchMapper mapper = session.getMapper(SearchMapper.class);
+	   
+	   result = mapper.SearchDetail(seach_seq);
+	   
+	   return result;
+   }
+   
+   public ArrayList<SilverSearchHospital_Details> SearchDetail2(int seach_seq){
+	   ArrayList<SilverSearchHospital_Details> result = null;
+	   
+	   SearchMapper mapper = session.getMapper(SearchMapper.class);
+	   
+	   result = mapper.SearchDetail2(seach_seq);
+	   
+	   return result;
+   }
+   
+   
 }
