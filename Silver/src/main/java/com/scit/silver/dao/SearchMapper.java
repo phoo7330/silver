@@ -19,7 +19,4 @@ public interface SearchMapper {
 	public int countRecord2(ArrayList<SilverSearch> SilverSearch);
 
 	public ArrayList<Details> selectmap3(int type);
-
-	public ArrayList<SilverSearch> selectmap2(ArrayList<SilverSearch> SilverSearch);
-	
 }

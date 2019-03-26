@@ -33,7 +33,7 @@ public class SearchDAO {
       
       SearchMapper mapper = session.getMapper(SearchMapper.class);
       
-      System.out.println(rb);
+      //System.out.println(rb);
       result = mapper.selectmap(rb, type);
 
       return result;
@@ -85,17 +85,4 @@ public class SearchDAO {
 
 		return result;	
 	}
-
-	
-	public ArrayList<SilverSearch> selectmap2(ArrayList<SilverSearch> SilverSearch){
-		ArrayList<SilverSearch> result = null;
-		
-		SearchMapper mapper = session.getMapper(SearchMapper.class);
-		
-		result = mapper.selectmap2(SilverSearch);
-
-		return result;
-	}
-
 }
-
