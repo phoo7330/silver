@@ -37,6 +37,8 @@
 		  			자주하는질문 </a>	
 		  		<a class="nav-item nav-link" href="searchDetail">
 		  			검색상세페이지 </a>	
+		  		<a class="nav-item nav-link" href="searchDetail2">
+		  			검색상세페이지2</a>	
 			</div>
 		  <!-- 오른쪽 자동 정렬 -->
 		  	<c:if test="${sessionScope.loginId==null}">
