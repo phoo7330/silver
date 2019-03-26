@@ -6,7 +6,7 @@
 <head>
 	<title>실버서퍼-기관검색</title>
 	
-	<!-- 인코딩 -->
+	<!-- 인코딩  -->
 	
 	<meta charset="UTF-8">
 	<meta  name="viewport" content="width-device-width, initial-scale=1, shrink-to-fit=no">
