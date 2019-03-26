@@ -85,4 +85,10 @@ public class SearchController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/searchDetail", method = { RequestMethod.POST, RequestMethod.GET })
+	public String searchDetail(String seach_seq) {
+		System.out.println(seach_seq);
+		return "redirect:/search";
+	}
+	
 }

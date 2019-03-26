@@ -116,8 +116,10 @@
 	        <!-- 리스트 테이블 -->
 	       
 			<div id="alllist" style="width:100%; height:600px; overflow:auto">
+	        	
 	        	<table id="mlist" width="100%" border="0" cellspacing="0" cellpadding="0">
 	    		</table>
+	    	
 	    	</div>
 	        </div>
 	      </div>
@@ -246,7 +248,7 @@ function init2(maptest) {
 		var listn='';
 		listn += '<table class="table table-horver">';
 		listn += '<tbody>';
-		listn += '<tr class="onesilver">';
+		listn += '<tr>';
 		listn += '<td scope="row"><p class="text-primary font-weight-bold my-0">검색결과가 없습니다</p></td>';
 		listn += '</tr>';
 		listn += '</tbody>';
@@ -309,6 +311,7 @@ function wlist(accidentDeath){
 	
 	if (ffff == 0) {
 		var list = '';
+		
 		list += '<table class="table table-horver">';
 	 
 		
@@ -323,9 +326,10 @@ function wlist(accidentDeath){
 		 } else if(item.type==4){
 			 siltype = "치매전담";			 
 		 }
-			list += '<tbody>';
-			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+		 	
+		 	list += '<tbody>';//개별 tr 클릭시 search_seq값을 컨트롤러로 넘긴다.
+		 	list += '<tr onclick="location.href=\'searchDetail?seach_seq='+item.seach_seq+'\'" class="onesilver" name="seach_seq" data-value="'+item.seach_seq+'">';
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 5rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
@@ -348,25 +352,20 @@ function wlist(accidentDeath){
 		 } else if(item.type==4){
 			 siltype = "치매전담";			 
 		 }
-			list += '<tbody>';
-			list += '<tr class="onesilver" data-value="'+item.seach_seq+'">';
-			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 4rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
+			
+			list += '<tbody>'; //개별 tr 클릭시 search_seq값을 컨트롤러로 넘긴다.
+			list += '<tr onclick="location.href=\'searchDetail?seach_seq='+item.seach_seq+'\'" class="onesilver" name="seach_seq" data-value="'+item.seach_seq+'">';
+			list += '<td scope="row"><p class="text-primary font-weight-bold my-0">'+item.grade+'등급</p><p class="text-danger my-0">'+siltype+'</p><p class="my-0 font-weight-bold">'+item.silvername+'</p>'+item.areaa+item.areab+item.areac+'<br><p class="text-dark bg-light" style="width: 5rem;">'+item.service+'</p><hr class="my-1"></span></td>'; //등급 & 시설종류 1.요양병원 2.요양원 3.방문시설 4.치매전담
 			list += '</tr>';
 			list += '</tbody>';
 			
-	 });
 			
+			
+	 });
+		
 		$('#mlist').append(list);
 	}
-	
-	  
-	  //클릭한 시설의 정보페이지로 넘어감
-	  $(".onesilver").on('click', function(){
-		  var booknum = $(this).attr("data-value");
-		  console.log(booknum);
-	  });
-	
-	 
+ 
 }
 //받은 좌표로 마커를 찍음
 function write(accidentDeath){
