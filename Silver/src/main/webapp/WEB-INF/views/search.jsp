@@ -70,28 +70,10 @@
 				<div class="container">
 				<div class="row mx-1">
 				<!-- 버튼 -->
-				
-				<!-- 
-				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="1">요양병원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="2">요양원</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="3">방문시설</button>
-				<button type="button" class="btn btn-outline-info btn-sm mx-1" btnFlag="4">치매전담</button>
-				 -->
-				
-				<div class="btn-group btn-group-toggle" data-toggle="buttons">
-				  <label class="btn btn-outline-info btn-sm mx-1 active">
-				    <input type="radio" name="categoryBtn" value="1" autocomplete="off" checked> 요양병원 
-				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1">
-				    <input type="radio" name="categoryBtn" value="2" autocomplete="off"> 요양원
-				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1">
-				    <input type="radio" name="categoryBtn" value="3" autocomplete="off"> 방문시설 
-				  </label>
-				  <label class="btn btn-outline-info btn-sm mx-1">
-				    <input type="radio" name="categoryBtn" value="4" autocomplete="off"> 치매전담 
-				  </label>
-				</div> 
+					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="1">요양병원</button>
+					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="2">요양원</button>
+					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="3">방문시설</button>
+					<button type="button" class="btn btn-outline-info btn-sm mx-1 categoryBtn" btnFlag="4">치매전담</button>
 				
 				<!-- 검색 -->
 				<form class="form-inline mt-2 mt-md-0">
@@ -167,12 +149,12 @@ $(function() {
 	init(flag);
 	pagelist(flag,page);
 	
-	$("input:radio[name=categoryBtn]").off("click").on("click",function(){
+	$(".categoryBtn").on("click",function(){
 		page = 1;
 		ffff = 0;
 		upmark = 0;
 		$("#alllist").scrollTop(0); 
-		flag = $(this).attr("value");
+		flag = $(this).attr("btnFlag");
 		init(flag);
 		pagelist(flag);
 	});
@@ -206,11 +188,6 @@ $(function() {
              
              
 		}
-		
-			
-        
-        
-        
         
         // scrollbar의 thumb가 바닥 전 30px까지 도달 하면 리스트를 가져온다.
        /* if( scrollTop + 400 > windowHeight ){
