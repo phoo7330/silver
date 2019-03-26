@@ -149,11 +149,11 @@
 				<label for="inputType" class="col-sm-2 col-form-label">가입자 구분</label>
 				<div class="col-sm-4">
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="custom" value="${member.type}" checked required>
+						<input class="form-check-input" type="radio" name="type" id="custom" value=1>
 						<label class="form-check-label" for="custom">일반가입자</label>
 					</div>
 					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="type" id="worker" value="${member.type}" >
+						<input class="form-check-input" type="radio" name="type" id="worker" value=2>
 						<label class="form-check-label" for="worker">종사자</label>
 					</div>
 				</div>
@@ -213,8 +213,8 @@
 				<div class="col-sm-4">
 					 <select class="custom-select my-1 mr-sm-2" name="gender" id="inputGender">
 					    <option selected>선택</option>
-					    <option value="${member.gender}">남성</option>
-					    <option value="${member.gender}">여성</option>
+					    <option name="gender" value="남성">남성</option>
+					    <option name="gender" value="여성">여성</option>
 					  </select>
 				</div>
 			<div class="col-sm-3">
@@ -242,6 +242,10 @@
 			<div class="col-sm-3">
 			</div>
 			</div>
+			
+			<!-- 경고값 초기화(3.26일 김동우 수정) -->
+			<input type="hidden" name="warning" value=0>
+			
 			<!-- 제출버튼 -->
 			<div class="form-group row">
 			<div class="col-sm-3">
@@ -280,14 +284,5 @@
 	 });  
 	</script>
 
-	<!-- 회원가입 정보입력 시 type & hidden값 지정(김동우수정) -->
-	<script type="radio/javascript">
-	$(document).ready(function(){
-		$('#custom').val('1');
-	});
-	$(document).ready(function(){
-		$('#worker').val('2');
-	});
-	</script>
 </body>
 </html>
